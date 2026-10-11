@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply message-id="urn:uuid:d1190ac7-9019-4545-bf43-2a77b508e4c9" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <data>
+        <yang-library xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-library">
+            <module-set>
+                <name>nokia</name>
+                <module>
+                    <name>ietf-netconf</name>
+                    <revision>2011-06-01</revision>
+                    <namespace>urn:ietf:params:xml:ns:netconf:base:1.0</namespace>
+                    <location>file:///opt/srlinux/models/ietf/ietf-netconf.yang</location>
+                    <feature>candidate</feature>
+                    <feature>confirmed-commit</feature>
+                    <feature>rollback-on-error</feature>
+                    <feature>validate</feature>
+                    <feature>startup</feature>
+                    <feature>url</feature>
+                    <deviation>ietf-srl-deviations</deviation>
+                </module>
+            </module-set>
+        </yang-library>
+    </data>
+</rpc-reply>
+

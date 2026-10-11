@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply message-id="urn:uuid:ba4bcadf-750d-43dd-a9a1-683bfbcbce67" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <data>
+        <interface xmlns="urn:nokia.com:srlinux:chassis:interfaces">
+            <name>ethernet-1/1</name>
+            <admin-state>enable</admin-state>
+            <subinterface>
+                <index>0</index>
+                <ipv4>
+                    <admin-state>enable</admin-state>
+                    <address>
+                        <ip-prefix>10.0.1.1/24</ip-prefix>
+                    </address>
+                </ipv4>
+            </subinterface>
+        </interface>
+    </data>
+</rpc-reply>
+

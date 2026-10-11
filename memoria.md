@@ -170,13 +170,58 @@ saved output in activities/module-1/get-rpc-yang-library-srlinux-output.xml
 
 Analizamos el modelo propietario `srl_nokia-interfaces@2026-07-31.yang` con `pyang -f tree` y, a partir del script de ejemplo, creamos dos scripts nuevos para consultar la interfaz `ethernet-1/1`: uno con GET (estado operativo) y otro con GET-CONFIG (configuración).
 
+copied activities/module-1/P3_a_get-rpc-nokia-ietf-netconf-srlinux.py 
+to 
+with new netconf filter. 
+schema_tree_filter = """
+<yang-library xmlns="urn:ietf:params:xml:ns:yang:ietf-yang-library">
+    <module-set>
+        <name>nokia</name>
+        <module>
+            <name>ietf-netconf</name>
+        </module>
+    </module-set>
+</yang-library>
+"""
+run
+python P3_a_get-rpc-nokia-ietf-netconf-srlinux.py clab-srlinux-testbed-r1 > get-rpc-yang-ietf-netconf-srlinux-output.xml
+vea cómo ahora se proporciona información relativa sólo al módulo `ietf-netconf`.
+
+---
+then run 
+$ pyang -f tree srl_nokia-interfaces@2026-07-31.yang 
+output saved to pyang-tree-nokia-interfaces.txt
+to analize how to consult info to the router
+
+also construct the call to get the xml file
+- Take element names and nesting from the pyang tree, which shows <interface> as the top level grouping(at the root) directly.
+- Take the xmlns from the namespace line of the .yang file.
+$ python P3_b_get-rpc-nokia-interfaces-srlinux.py clab-srlinux-testbed-r1 > a_P3_b_nokia-interfaces-srlinux-output.xml
+
+CREATE
+
+
+ (1) get-rpc-interface-srlinux.py para realizar una consulta RPC de tipo GET que obtenga los datos operativos de la interfaz de red ethernet-1/1 (intefaz de conexión con el host) de uno de los router Nokia SR Linux
+$ python P3_get-rpc-interface-srlinux.py clab-srlinux-testbed-r1 > P3_1_nokia-interface-r1-e1.xml
+
+ (2) get-config-rpc-interface-srlinux.py para realizar una consulta RPC de tipo GET-CONFIG que obtenga los datos de configuración de la interfaz de red ethernet-1/1 de uno de los router Nokia SR Linux
+$ python P3_get-config-rpc-interface-srlinux.py clab-srlinux-testbed-r1 > P3_2_nokia-getConfig-interface-r1-e1.xml
+
+
 **Pregunta 3.** Scripts `get-rpc-interface-srlinux.py` y `get-config-rpc-interface-srlinux.py`; *datastore* al que accede cada consulta.
 
 > _[PENDIENTE: descripción de los filtros utilizados en cada script]_
 >
 > _[PENDIENTE: extracto de la salida de cada script]_
 >
-> _[PENDIENTE: respuesta sobre los datastores]_
+> _[: respuesta sobre los datastores]_
+> (1) <get>: datastore running más los datos de estado
+
+<get> no lleva parámetro source, así que no se elige datastore. Según RFC 6241 (§7.7), devuelve la configuración del datastore running junto con los datos de estado (nodos ro del árbol pyang: oper-state, statistics, ifindex…). En el modelo NMDA (RFC 8342), que el router anuncia con ietf-datastores e ietf-netconf-nmda, esto equivale aproximadamente a la vista del datastore operational.
+
+(2) <get-config>: el datastore indicado en source, aquí running
+
+<get-config> exige indicar el datastore de origen. En el script es source="running", la configuración activa del router. Solo devuelve datos de configuración (nodos rw: admin-state, mtu, description, subinterface…), nunca datos de estado.
 
 ### 1.2. Capacidades de gestión con gNMI y captura de tráfico de gestión
 
