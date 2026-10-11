@@ -1,0 +1,441 @@
+Resultado del script: 
+
+- YANG modules supported by the network device clab-srlinux-testbed-r1: 
+YANG module 1: {'module': 'ietf-netconf-monitoring', 'revision': '2010-10-04', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring'}
+YANG module 2: {'module': 'ietf-yang-library', 'revision': '2019-01-04', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-yang-library'}
+YANG module 3: {'module': 'srl_nokia-aaa', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:aaa:aaa'}
+YANG module 4: {'module': 'srl_nokia-aaa-password', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:aaa:aaa-password'}
+YANG module 5: {'module': 'srl_nokia-aaa-types', 'revision': '2023-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:aaa:aaa-types'}
+YANG module 6: {'module': 'srl_nokia-acl', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:acl'}
+YANG module 7: {'module': 'srl_nokia-acl-gbp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:acl-gbp'}
+YANG module 8: {'module': 'srl_nokia-acl-policers', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:acl-policers'}
+YANG module 9: {'module': 'srl_nokia-acl-qos', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:acl-qos'}
+YANG module 10: {'module': 'srl_nokia-aft', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:aft'}
+YANG module 11: {'module': 'srl_nokia-aggregate-routes', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:static-route:aggregate-routes'}
+YANG module 12: {'module': 'srl_nokia-app-mgmt', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:app:app-mgmt'}
+YANG module 13: {'module': 'srl_nokia-bfd', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bfd:bfd'}
+YANG module 14: {'module': 'srl_nokia-bgp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:bgp'}
+YANG module 15: {'module': 'srl_nokia-bgp-bmp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:bmp'}
+YANG module 16: {'module': 'srl_nokia-bgp-bmp-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:bmp-types'}
+YANG module 17: {'module': 'srl_nokia-bgp-evpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bgp-evpn'}
+YANG module 18: {'module': 'srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-multicast-destinations', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mcid:bgp-evpn-bgp-instance-mpls-bridge-table-multicast-destinations'}
+YANG module 19: {'module': 'srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-statistics', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:bgp-evpn-bgp-instance-mpls-bridge-table-statistics'}
+YANG module 20: {'module': 'srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-unicast-destinations', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:bgp-evpn-bgp-instance-mpls-bridge-table-unicast-destinations'}
+YANG module 21: {'module': 'srl_nokia-bgp-evpn-bgp-instance-vpws-destinations-remote-ac', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:bgp-evpn-bgp-instance-vpws-destinations-remote-ac'}
+YANG module 22: {'module': 'srl_nokia-bgp-evpn-layer-3-neighbor-sync', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bgp-evpn-layer-3-neighbor-sync'}
+YANG module 23: {'module': 'srl_nokia-bgp-evpn-multicast-gateway', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:multicast-evpn-gateway'}
+YANG module 24: {'module': 'srl_nokia-bgp-ipvpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bgp-ipvpn'}
+YANG module 25: {'module': 'srl_nokia-bgp-vpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:bgp-vpn'}
+YANG module 26: {'module': 'srl_nokia-boot', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:boot'}
+YANG module 27: {'module': 'srl_nokia-bridge-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bridge-table'}
+YANG module 28: {'module': 'srl_nokia-bridge-table-mac-duplication', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bridge-table-mac-duplication'}
+YANG module 29: {'module': 'srl_nokia-bridge-table-mac-duplication-entries', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:bridge-table-mac-duplication-entries'}
+YANG module 30: {'module': 'srl_nokia-bridge-table-mac-learning', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bridge-table-mac-learning'}
+YANG module 31: {'module': 'srl_nokia-bridge-table-mac-learning-entries', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac-learn:bridge-table-mac-learning-entries'}
+YANG module 32: {'module': 'srl_nokia-bridge-table-mac-limit', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bridge-table-mac-limit'}
+YANG module 33: {'module': 'srl_nokia-bridge-table-mac-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:bridge-table-mac-table'}
+YANG module 34: {'module': 'srl_nokia-bridge-table-proxy-arp-nd', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-proxy-arp-nd:bridge-table-proxy-arp-nd'}
+YANG module 35: {'module': 'srl_nokia-bridge-table-reserved-macs', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:bridge-table-reserved-macs'}
+YANG module 36: {'module': 'srl_nokia-bridge-table-shg', 'revision': '2024-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:bridge-table-shg'}
+YANG module 37: {'module': 'srl_nokia-bridge-table-static-mac', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-static-mac:bridge-table-static-mac'}
+YANG module 38: {'module': 'srl_nokia-common', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:common'}
+YANG module 39: {'module': 'srl_nokia-configuration', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:configuration'}
+YANG module 40: {'module': 'srl_nokia-configuration-role', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:configuration-role'}
+YANG module 41: {'module': 'srl_nokia-congestion_signalling', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:csig'}
+YANG module 42: {'module': 'srl_nokia-connection-point-bridge-table-mac-duplication-entries', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-mac-duplication-entries'}
+YANG module 43: {'module': 'srl_nokia-connection-point-bridge-table-mac-learning-entries', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac-learn:connection-point-bridge-table-mac-learning-entries'}
+YANG module 44: {'module': 'srl_nokia-connection-point-bridge-table-mac-table', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-mac-table'}
+YANG module 45: {'module': 'srl_nokia-connection-point-bridge-table-statistics', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-statistics'}
+YANG module 46: {'module': 'srl_nokia-connection-point-pseudowires', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:connection-point-pseudowires'}
+YANG module 47: {'module': 'srl_nokia-dhcp-server', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:dhcp:dhcp-server'}
+YANG module 48: {'module': 'srl_nokia-dhcp-server-guard', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fhs:dhcp-server-guard'}
+YANG module 49: {'module': 'srl_nokia-dns', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:dns'}
+YANG module 50: {'module': 'srl_nokia-dot1x', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:dot1x'}
+YANG module 51: {'module': 'srl_nokia-dot1x-authenticator', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:dot1x-authenticator'}
+YANG module 52: {'module': 'srl_nokia-dot1x-tunneling', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:dot1x-tunneling'}
+YANG module 53: {'module': 'srl_nokia-ethcfm', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ethcfm:ethcfm'}
+YANG module 54: {'module': 'srl_nokia-event-handler', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:event:event-handler'}
+YANG module 55: {'module': 'srl_nokia-extensions', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:extensions'}
+YANG module 56: {'module': 'srl_nokia-features', 'revision': '2026-07-31', 'features': 'aaa-fqdn-for-radius-server-address,aaa-fqdn-for-tacacs-server-address,aaa-remote-superuser,aaa-server-timeout,aaa-servers-health-check,aaa-servers-tacacs-vsa,aaa-spiffe-id,aaa-superuser,acl-cpm-filter-type-mac,acl-filter-allowed-on-irb-interfaces,acl-filter-allowed-on-l2-interfaces,acl-filter-ip-allowed-on-l2-interfaces,acl-filter-mac,acl-filter-mac-allowed-on-l2-interfaces,acl-filter-mac-allowed-on-l3-interfaces,acl-if-output-shared-mac-tcam-entries,acl-if-output-shared-tcam-entries,acl-ip-prefix-list,acl-ip-prefix-list-apply-path-bgp-peers,acl-logging,acl-policer,acl-policer-for-mac-filters,acl-subinterface-entry-statistics,admin-user-roles,anycast-gw,arp-nd-datapath-programming,backplane-facing-capacity,bfd,bgp-add-paths,bgp-add-paths-evpn,bgp-add-paths-policy-control,bgp-afi-safi-default-policy-action,bgp-afi-safi-policy,bgp-auth-password,bgp-auto-link-bandwidth,bgp-cfg-afi-safi-list,bgp-domain-path,bgp-graceful-restart-err,bgp-graceful-restart-gaps,bgp-graceful-restart-state-additions,bgp-group-based-policy,bgp-import-export-policy-leaflist,bgp-ipv6-next-hop-tunnel-resolution,bgp-local-as-container-iso-list,bgp-max-ecmp-hash-buckets,bgp-mtu-discovery,bgp-multipath-maximum-paths-limit-128,bgp-next-hop-resolution-policy,bgp-peertype-maximum-paths,bgp-prefix-limit,bgp-prefix-limit-forever,bgp-prefix-limit-last-exceeded,bgp-prefix-limit-post-policy,bgp-prefix-limit-received,bgp-restart-max-wait,bgp-rib-afi-safi-list,bgp-rib-afi-safi-list-for-evpn,bgp-rib-afi-safi-route,bgp-route-flap-damping,bgp-rr-for-rtc,bgp-rtc,bgp-send-community-leaflist,bgp-single-hop-connected-check,bgp-unnumbered-peers,bgp-vpn-allow-export,breakout-ports-4,breakout-speed-10G,breakout-speed-25G,bridged,bt-split-horizon-groups,chassis-vertical-orientation,cli-commit-discard-options,cli-modeled-environment,cli-plugin-authorization,combined-bgp-ecmp,combined-ecmp-redirect,config-l2-mtu-default,config-sub-if-l2-mtu,containerz-cgroup,containerz-location,cpm-datapath-resources,dac-link-training,dhcp-relay,dhcp-relay-fqdn,dhcp-relay-irb-l2-circuit-id,dhcp-server,dhcp-svr-boot-compute,dhcp-svr-option-121,dhcp-svr-option-26,disk-encryption,dot1q-vlan-ranges,dot1x-tunnel,dot1x-tunnel-system-stats,dot1x-tunnel-tunnel-all,dynamic-subinterfaces,dynamic-tcam,egress-mac-filter-restriction,event-handler,evpn,evpn-iff,evpn-iff-unnumbered,evpn-ifl-gw-ip,evpn-ifl-host,evpn-ifl-host-ip-aliasing,evpn-ifl-unequal-ecmp,evpn-layer-2-ecmp,evpn-mh,evpn-mh-anycast,evpn-mh-ip-aliasing,evpn-mh-multicast-non-df-tcam-resource,evpn-mh-non-system-ipv4-address,evpn-mh-virtual-es,evpn-route-internal-tags,evpn-vxlan-ifl,evpn-vxlan-mac-vrf,evpn-vxlan-oism,evpn-vxlan-oism-peg,facility-alarm-mgr,factory-reset,fan-avg-speed-show-report,fib-programming-progress,fib-tunnel-programming,fixed,forward-error-correction-ethernet,glome-authentication,gnmi-extensions,gnmi-services,gnoi-bgp,gnoi-bootconfig,gnoi-containerz,gnoi-export-protos,gnoi-healthz,gnoi-healthz-forwarding-complex,gnsi-accounting,gnsi-authz,gnsi-certz,gnsi-credentialz,gnsi-pathz,group-based-policy,group-based-policy-ip-vrf,grpc-server,grpc-server-max-concurrent-streams,grpc-tunnel,grub-password,icmp-rate-control,igmp,igmp-ipvrf,igmp-snooping,igp-overload-on-fib-failure,ingress-subif-policing,inter-as-nhsrr-ipvpn,interface-evpn-internal-tags,interface-references,internal-tags,intf-eth-in-undersize-frames,ip-acl-dscp-set,ip-qos-multifield,ip-qos-multifield-on-bridged-subifs,ipv4-unnumbered,isis-advertise-passive-only,isis-interface-afi-safi-enable,isis-level-passive,isis-lsdb,isis-lsdb-te-extensions,isis-mi,isis-mt,isis-multi-part-tlv,isis-nsf,isis-topology-state,ixr-xgs,keychain,l2-proxy-arp,l2-proxy-arp-nd-control-flood-on-evpn,l2-proxy-arp-nd-route-internal-tags,l2-proxy-nd,l2cp-transparency,l2cp-transparency-stats,l2cp-transparency-xstp,l3-proxy-arp,l3-proxy-arp-irb,l3-proxy-nd,l3-proxy-nd-irb,lacp-fallback,lag,license,lldp-component,lldp-suppress-tlv,lldp-vlan,load-balancing,location-coordinates,log-filter-for-negation,log-tls,longest-prefix-match,maintenance-mode-improvements,mcast-route-policy,mirror-dest-local,mirror-dest-remote,mirror-dest-remote-tunnel-encap-l2ogre,mirror-source-acl,mirror-source-intf,mirror-source-subintf,mirroring,mirroring-intf-stats,mld,mld-ipvrf,mld-snooping,named-queues-and-named-fcs,ndk-admin-state,ndk-auto-telemetry-state,ndk-disable-caching,netconf,netconf-unix-socket,network-instance-leaked-route-readvertisement,network-instance-route-limits,network-instance-single-dynamic-label-block-mpls,nhsrr-evpn,ntp-server,ntp-tls,openconfig,operational-fan-speed,packet-tracer,password-complexity-repeated-characters,password-complexity-sequence,pim,pim-ipvrf,platform-7220-d2,platform-group-based-policy,platform-group-based-policy-ip-vrf,policy-based-forwarding-down-override,policy-based-forwarding-down-override-action-nhg,policy-based-forwarding-dscp-ip-protocol,policy-based-forwarding-nh-transport,policy-based-forwarding-nhg,port-breakout,port-fec-clause74,port-groups,port-speed-100G,port-speed-10G,port-speed-1G,port-speed-25G,port-speed-40G,qos,qos-dot1p-classifier-policy,qos-dot1p-rewrite-policy,qos-drop-probability,qos-dscp-classifier-policy,qos-dscp-rewrite-policy,qos-ecn,qos-irb-subinterface,qos-management-protocols-dscp,qos-multicast-queue,qos-queue-burst-delay,qos-queue-high-threshold,qos-queue-management-profile,qos-rewrite-dot1p,qos-scheduler-policies,qos-unicast-queue,qos-vxlan-classifier-policy,qos-wred-traffic-type-tcp,ra-guard,radius-source-address,radius-tls,reload-delay,route-leaking,route-table-show-report-improvements,router-advertisement-rdnss-option,routing-policy-bgp-disable-fib,routing-policy-bgp-local-pref-set,routing-policy-bgp-med,routing-policy-bgp-next-hop-self-action,routing-policy-bgp-next-hop-set-action,routing-policy-community-match-set-options,routing-policy-conditional-statements,routing-policy-enhanced-as-path-set,routing-policy-extended-community-actions,routing-policy-extended-community-sets,routing-policy-isis-actions,routing-policy-match-protocol-redefine,routing-policy-named-statements,routing-policy-next-policy,routing-policy-next-statement,routing-policy-ospf-actions,routing-policy-preference-action,routing-policy-prefix-set-match-options-any,routing-policy-prefix-set-match-options-invert,routing-policy-resilient-hash-action,routing-policy-standard-community-actions,routing-policy-standard-community-sets,routing-policy-subroutines,routing-policy-table-connections,routing-policy-tag-set-match-options,secure-boot,segment-routing-adjacency-sid,segment-routing-shared-sid,sflow,sflow-collector-dscp,show-acl-aclfilter,snmp,snmp-counters,snmp-over-tcp,snmp-tools-trap,snmp-traps,snmp-v3,stat-interface-link-transitions,static-next-hop-cpe,static-next-hop-group-backup,static-next-hop-unnumbered-interface,static-next-hop-unnumbered-mpls,static-nhg-nh-reference,static-route-group-based-policy,static-route-tag-set,static-route-tag-value,storm-control,storm-control-action,stp,strict-request-path-verification,subif-acl-policer,subif-ip-tags,subif-policer,sync-gnss-within-holdover,sync-ptp-max-steps-removed,system-filter,system-forwarding-mode,system-hash-seed-from-mac,system-resource-tunnels,system-resource-utilization,system-resource-vp-lag-groups,system-resource-vxlan-tunnels,tacacs-source-address,tftp,tls-cert-expiry,tls-server-profile-rename,tpm-1-2,transceiver-link-length-info,trident3,unequal-ecmp,unified-forwarding-tables,virtual-ip-discovery,vlan-id-optional,vlan-tpid,vxlan,vxlan-stats,warm-reboot,xdp-restart-unsupported', 'namespace_uri': 'urn:nokia.com:srlinux:general:features'}
+YANG module 57: {'module': 'srl_nokia-first-hop-security-ip-mac-binding', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:srl_nokia-first-hop-security-ip-mac-binding'}
+YANG module 58: {'module': 'srl_nokia-flexible-algorithms', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:flexible-algorithms'}
+YANG module 59: {'module': 'srl_nokia-flexible-algorithms-isis', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:flexible-algorithms-isis'}
+YANG module 60: {'module': 'srl_nokia-flexible-algorithms-segment-routing', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:flexible-algorithms-segment-routing'}
+YANG module 61: {'module': 'srl_nokia-ftp', 'revision': '2024-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:ftp'}
+YANG module 62: {'module': 'srl_nokia-gnsi-authz', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:aaa:gnsi-authz'}
+YANG module 63: {'module': 'srl_nokia-gnsi-certz', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:gnsi-certz'}
+YANG module 64: {'module': 'srl_nokia-gnsi-credentialz', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:gnsi-credentialz'}
+YANG module 65: {'module': 'srl_nokia-gnsi-pathz', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:aaa:gnsi-pathz'}
+YANG module 66: {'module': 'srl_nokia-gribi', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:grpc:gribi'}
+YANG module 67: {'module': 'srl_nokia-group-based-policy', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:group-based-policy'}
+YANG module 68: {'module': 'srl_nokia-grpc', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:grpc:grpc'}
+YANG module 69: {'module': 'srl_nokia-grpc-tunnel', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:grpc:grpc-tunnel'}
+YANG module 70: {'module': 'srl_nokia-icmp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:icmp'}
+YANG module 71: {'module': 'srl_nokia-if-ip', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:if-ip'}
+YANG module 72: {'module': 'srl_nokia-if-ip-tags', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:if-ip-tags'}
+YANG module 73: {'module': 'srl_nokia-if-ip-urpf', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:if-ip-urpf'}
+YANG module 74: {'module': 'srl_nokia-if-mpls', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:if-mpls'}
+YANG module 75: {'module': 'srl_nokia-igmp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:igmp'}
+YANG module 76: {'module': 'srl_nokia-igmp-snooping', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:igmp-snooping'}
+YANG module 77: {'module': 'srl_nokia-igmp-types', 'revision': '2023-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:igmp-types'}
+YANG module 78: {'module': 'srl_nokia-interfaces', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces'}
+YANG module 79: {'module': 'srl_nokia-interfaces-bridge-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-bridge-table'}
+YANG module 80: {'module': 'srl_nokia-interfaces-bridge-table-dhcp-snoop', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-bridge-table-dhcp-snoop'}
+YANG module 81: {'module': 'srl_nokia-interfaces-bridge-table-mac-duplication-entries', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-mac-duplication-entries'}
+YANG module 82: {'module': 'srl_nokia-interfaces-bridge-table-mac-learning-entries', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac-learn:interfaces-bridge-table-mac-learning-entries'}
+YANG module 83: {'module': 'srl_nokia-interfaces-bridge-table-mac-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-mac-table'}
+YANG module 84: {'module': 'srl_nokia-interfaces-bridge-table-statistics', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-statistics'}
+YANG module 85: {'module': 'srl_nokia-interfaces-bridge-table-stp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:stp:interfaces-bridge-table-stp'}
+YANG module 86: {'module': 'srl_nokia-interfaces-dco', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-dco'}
+YANG module 87: {'module': 'srl_nokia-interfaces-dynamic-subinterfaces', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:active-vlan-detection:interfaces-dynamic-subinterfaces'}
+YANG module 88: {'module': 'srl_nokia-interfaces-ethernet-segment-association', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:interfaces-ethernet-segment-association'}
+YANG module 89: {'module': 'srl_nokia-interfaces-ip-dhcp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-ip-dhcp'}
+YANG module 90: {'module': 'srl_nokia-interfaces-ip-dhcp-relay', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:dhcp-relay:interfaces-ip-dhcp-relay'}
+YANG module 91: {'module': 'srl_nokia-interfaces-ip-dhcp-server', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:dhcp:interfaces-ip-dhcp-server'}
+YANG module 92: {'module': 'srl_nokia-interfaces-ip-vrrp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:vrrp:interfaces-ip-vrrp'}
+YANG module 93: {'module': 'srl_nokia-interfaces-l2cp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-l2cp'}
+YANG module 94: {'module': 'srl_nokia-interfaces-lag', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:lag:interfaces-lag'}
+YANG module 95: {'module': 'srl_nokia-interfaces-local-mirror-destination', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:mirror:interfaces-local-mirror-destination'}
+YANG module 96: {'module': 'srl_nokia-interfaces-nbr', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:arp-nd:interfaces-nbr'}
+YANG module 97: {'module': 'srl_nokia-interfaces-nbr-evpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:interfaces-nbr-evpn'}
+YANG module 98: {'module': 'srl_nokia-interfaces-nbr-virtual-ip-discovery', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:arp-nd:interfaces-nbr-virtual-ip-discovery'}
+YANG module 99: {'module': 'srl_nokia-interfaces-p4rt', 'revision': '2022-06-30', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-p4rt'}
+YANG module 100: {'module': 'srl_nokia-interfaces-router-adv', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:arp-nd:interfaces-router-adv'}
+YANG module 101: {'module': 'srl_nokia-interfaces-vlans', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-vlans'}
+YANG module 102: {'module': 'srl_nokia-interfaces-vxdp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:interfaces-vxdp'}
+YANG module 103: {'module': 'srl_nokia-ip-route-tables', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:ip-route-tables'}
+YANG module 104: {'module': 'srl_nokia-ipfix', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:ipfix'}
+YANG module 105: {'module': 'srl_nokia-ippm-source-udp-pool', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:twamp:ippm-source-udp-pool'}
+YANG module 106: {'module': 'srl_nokia-isis', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:isis:isis'}
+YANG module 107: {'module': 'srl_nokia-isis-lsdb', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:isis:isis-lsdb'}
+YANG module 108: {'module': 'srl_nokia-isis-lsdb-types', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:isis:isis-lsdb-types'}
+YANG module 109: {'module': 'srl_nokia-json-rpc', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:json-rpc:json-rpc'}
+YANG module 110: {'module': 'srl_nokia-keychains', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:keychains'}
+YANG module 111: {'module': 'srl_nokia-lacp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:lag:lacp'}
+YANG module 112: {'module': 'srl_nokia-ldp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ldp:ldp'}
+YANG module 113: {'module': 'srl_nokia-license', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:license:license'}
+YANG module 114: {'module': 'srl_nokia-link-measurement', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:twamp:link-measurement'}
+YANG module 115: {'module': 'srl_nokia-linux', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:linux'}
+YANG module 116: {'module': 'srl_nokia-lldp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:lldp:lldp'}
+YANG module 117: {'module': 'srl_nokia-lldp-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:lldp:lldp-types'}
+YANG module 118: {'module': 'srl_nokia-load-balancing', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:load-balancing'}
+YANG module 119: {'module': 'srl_nokia-logging', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:log:logging'}
+YANG module 120: {'module': 'srl_nokia-macsec', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:macsec:macsec'}
+YANG module 121: {'module': 'srl_nokia-maintenance-mode', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:maintenance-mode'}
+YANG module 122: {'module': 'srl_nokia-micro-bfd', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bfd:micro-bfd'}
+YANG module 123: {'module': 'srl_nokia-mirroring', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mirror:mirroring'}
+YANG module 124: {'module': 'srl_nokia-mld', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:mld'}
+YANG module 125: {'module': 'srl_nokia-mld-snooping', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:mld-snooping'}
+YANG module 126: {'module': 'srl_nokia-mpls', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mpls:mpls'}
+YANG module 127: {'module': 'srl_nokia-mpls-label-management', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:label:mpls-label-management'}
+YANG module 128: {'module': 'srl_nokia-mpls-route-tables', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:mpls-route-tables'}
+YANG module 129: {'module': 'srl_nokia-mpls-rsvp-tunnel', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mpls:mpls-rsvp-tunnel'}
+YANG module 130: {'module': 'srl_nokia-mpls-rsvp-tunnel-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mpls:mpls-rsvp-tunnel-types'}
+YANG module 131: {'module': 'srl_nokia-mpls-services-evpn-label-management', 'revision': '2025-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:mpls-services-evpn-label-management'}
+YANG module 132: {'module': 'srl_nokia-mpls-services-network-instance-label-management', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:mpls-services-network-instance-label-management'}
+YANG module 133: {'module': 'srl_nokia-msdp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:msdp:msdp'}
+YANG module 134: {'module': 'srl_nokia-mtu', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:mtu'}
+YANG module 135: {'module': 'srl_nokia-multicast-mfib-tables', 'revision': '2023-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mfib:multicast-mfib-tables'}
+YANG module 136: {'module': 'srl_nokia-mvpn-l3', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:pim:mvpn-l3'}
+YANG module 137: {'module': 'srl_nokia-ndk', 'revision': '2025-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:ndk:ndk'}
+YANG module 138: {'module': 'srl_nokia-netconf-server', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:netconf:netconf-server'}
+YANG module 139: {'module': 'srl_nokia-network-instance', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:network-instance'}
+YANG module 140: {'module': 'srl_nokia-network-instance-leaking', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:network-instance-leaking'}
+YANG module 141: {'module': 'srl_nokia-network-instance-mtu', 'revision': '2024-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:network-instance-mtu'}
+YANG module 142: {'module': 'srl_nokia-network-instance-route-limits', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:network-instance-route-limits'}
+YANG module 143: {'module': 'srl_nokia-next-hop-groups', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:static-route:next-hop-groups'}
+YANG module 144: {'module': 'srl_nokia-ntp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:ntp'}
+YANG module 145: {'module': 'srl_nokia-ntp-server', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:ntp-server'}
+YANG module 146: {'module': 'srl_nokia-oam', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:oam:oam'}
+YANG module 147: {'module': 'srl_nokia-oam-pm-ethcfm', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ethcfm:oam-pm-ethcfm'}
+YANG module 148: {'module': 'srl_nokia-oam-pm-ip', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:twamp:oam-pm-ip'}
+YANG module 149: {'module': 'srl_nokia-openconfig', 'revision': '2022-06-30', 'namespace_uri': 'urn:nokia.com:srlinux:oc-mgmt:openconfig'}
+YANG module 150: {'module': 'srl_nokia-ospf', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ospf:ospf'}
+YANG module 151: {'module': 'srl_nokia-ospf-lsdb', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ospf:ospf-lsdb'}
+YANG module 152: {'module': 'srl_nokia-ospfv3-lsas', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:ospf:ospfv3-lsas'}
+YANG module 153: {'module': 'srl_nokia-packet-link-qual', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:packet-link-qual'}
+YANG module 154: {'module': 'srl_nokia-packet-match-types', 'revision': '2024-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:packet-match-types'}
+YANG module 155: {'module': 'srl_nokia-pcep', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:pcc:pcep'}
+YANG module 156: {'module': 'srl_nokia-pim', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:pim:pim'}
+YANG module 157: {'module': 'srl_nokia-platform', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform'}
+YANG module 158: {'module': 'srl_nokia-platform-acl', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-acl'}
+YANG module 159: {'module': 'srl_nokia-platform-cgroup', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:platform-cgroup'}
+YANG module 160: {'module': 'srl_nokia-platform-chassis', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-chassis'}
+YANG module 161: {'module': 'srl_nokia-platform-control', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-control'}
+YANG module 162: {'module': 'srl_nokia-platform-control-fp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-control-fp'}
+YANG module 163: {'module': 'srl_nokia-platform-cpu', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:platform-cpu'}
+YANG module 164: {'module': 'srl_nokia-platform-datapath-resources', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-datapath-resources'}
+YANG module 165: {'module': 'srl_nokia-platform-disk', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:platform-disk'}
+YANG module 166: {'module': 'srl_nokia-platform-disk-resources', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-disk-resources'}
+YANG module 167: {'module': 'srl_nokia-platform-fabric', 'revision': '2023-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-fabric'}
+YANG module 168: {'module': 'srl_nokia-platform-fan', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-fan'}
+YANG module 169: {'module': 'srl_nokia-platform-first-hop-security-res-mgmt', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-first-hop-security-res-mgmt'}
+YANG module 170: {'module': 'srl_nokia-platform-healthz', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-healthz'}
+YANG module 171: {'module': 'srl_nokia-platform-icm', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-icm'}
+YANG module 172: {'module': 'srl_nokia-platform-lc', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-lc'}
+YANG module 173: {'module': 'srl_nokia-platform-linecard-fib', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-linecard-fib'}
+YANG module 174: {'module': 'srl_nokia-platform-memory', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:platform-memory'}
+YANG module 175: {'module': 'srl_nokia-platform-mtu', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-mtu'}
+YANG module 176: {'module': 'srl_nokia-platform-oam', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-oam'}
+YANG module 177: {'module': 'srl_nokia-platform-p4rt', 'revision': '2022-06-30', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-p4rt'}
+YANG module 178: {'module': 'srl_nokia-platform-pipeline-counters', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-pipeline-counters'}
+YANG module 179: {'module': 'srl_nokia-platform-poe', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-poe'}
+YANG module 180: {'module': 'srl_nokia-platform-psu', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-psu'}
+YANG module 181: {'module': 'srl_nokia-platform-qos', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-qos'}
+YANG module 182: {'module': 'srl_nokia-platform-redundancy', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-redundancy'}
+YANG module 183: {'module': 'srl_nokia-platform-resource-mgmt', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-resource-mgmt'}
+YANG module 184: {'module': 'srl_nokia-platform-resource-monitoring', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-resource-monitoring'}
+YANG module 185: {'module': 'srl_nokia-platform-secure-boot', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-secure-boot'}
+YANG module 186: {'module': 'srl_nokia-platform-tcam', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-tcam'}
+YANG module 187: {'module': 'srl_nokia-platform-tpm', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-tpm'}
+YANG module 188: {'module': 'srl_nokia-platform-vxdp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:platform-vxdp'}
+YANG module 189: {'module': 'srl_nokia-policy-forwarding', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:acl:policy-forwarding'}
+YANG module 190: {'module': 'srl_nokia-programming-errors', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:programming-errors'}
+YANG module 191: {'module': 'srl_nokia-qos', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:qos:qos'}
+YANG module 192: {'module': 'srl_nokia-qos-global-policers', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:qos:qos-glb-pol'}
+YANG module 193: {'module': 'srl_nokia-qos-policers', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:qos:qos-policers'}
+YANG module 194: {'module': 'srl_nokia-ra_guard', 'revision': '2025-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fhs:ra_guard'}
+YANG module 195: {'module': 'srl_nokia-rib-bgp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:rib-bgp'}
+YANG module 196: {'module': 'srl_nokia-routing-policy', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:plcy:routing-policy'}
+YANG module 197: {'module': 'srl_nokia-rsvp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mpls:rsvp'}
+YANG module 198: {'module': 'srl_nokia-seamless-bfd', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bfd:seamless-bfd'}
+YANG module 199: {'module': 'srl_nokia-segment-routing', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:segrt:segment-routing'}
+YANG module 200: {'module': 'srl_nokia-service-activation-testhead', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:sath:service-activation-testhead'}
+YANG module 201: {'module': 'srl_nokia-sflow', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:sflow'}
+YANG module 202: {'module': 'srl_nokia-srv6', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:srv6:srv6'}
+YANG module 203: {'module': 'srl_nokia-srv6-instance', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:srv6:srv6-instance'}
+YANG module 204: {'module': 'srl_nokia-srv6-isis', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:srv6:srv6-isis'}
+YANG module 205: {'module': 'srl_nokia-ssh', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:ssh'}
+YANG module 206: {'module': 'srl_nokia-stamp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:twamp:stamp'}
+YANG module 207: {'module': 'srl_nokia-static-routes', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:static-route:static-routes'}
+YANG module 208: {'module': 'srl_nokia-stp-common', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:stp:stp-common'}
+YANG module 209: {'module': 'srl_nokia-stp-types', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:stp:stp-types'}
+YANG module 210: {'module': 'srl_nokia-system', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:system'}
+YANG module 211: {'module': 'srl_nokia-system-alarms', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:alarm'}
+YANG module 212: {'module': 'srl_nokia-system-banner', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:system-banner'}
+YANG module 213: {'module': 'srl_nokia-system-bridge-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:system-bridge-table'}
+YANG module 214: {'module': 'srl_nokia-system-bridge-table-evpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:system-bridge-table-evpn'}
+YANG module 215: {'module': 'srl_nokia-system-bridge-table-evpn-mpls-multicast-tep', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn-mpls-multicast-tep:system-bridge-table-evpn-mpls-multicast-tep'}
+YANG module 216: {'module': 'srl_nokia-system-bridge-table-proxy-arp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-proxy-arp-nd:system-bridge-table-proxy-arp'}
+YANG module 217: {'module': 'srl_nokia-system-cli', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:system-cli'}
+YANG module 218: {'module': 'srl_nokia-system-coordinates', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:system-coordinates'}
+YANG module 219: {'module': 'srl_nokia-system-datapath', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:datapath'}
+YANG module 220: {'module': 'srl_nokia-system-info', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:system-info'}
+YANG module 221: {'module': 'srl_nokia-system-multicast', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:system-multicast'}
+YANG module 222: {'module': 'srl_nokia-system-multicast-mfib-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mfib:system-multicast-mfib-table'}
+YANG module 223: {'module': 'srl_nokia-system-name', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:system-name'}
+YANG module 224: {'module': 'srl_nokia-system-network-instance', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:net-inst:system-network-instance'}
+YANG module 225: {'module': 'srl_nokia-system-network-instance-bgp-evpn-ethernet-segments', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:evpn:system-network-instance-bgp-evpn-ethernet-segments'}
+YANG module 226: {'module': 'srl_nokia-system-network-instance-bgp-evpn-multicast', 'revision': '2024-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:igmp:system-network-instance-bgp-evpn-multicast'}
+YANG module 227: {'module': 'srl_nokia-system-network-instance-bgp-vpn', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:bgp:system-network-instance-bgp-vpn'}
+YANG module 228: {'module': 'srl_nokia-system-network-instance-vxlan', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:vxlan:system-network-instance-vxlan'}
+YANG module 229: {'module': 'srl_nokia-system-protocols', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:system-protocols'}
+YANG module 230: {'module': 'srl_nokia-system-protocols-mgmt-stp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:stp:system-protocols-mgmt-stp'}
+YANG module 231: {'module': 'srl_nokia-system-snmp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:snmp'}
+YANG module 232: {'module': 'srl_nokia-system-utilization', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:system-utilization'}
+YANG module 233: {'module': 'srl_nokia-table-connections', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:plcy:table-connections'}
+YANG module 234: {'module': 'srl_nokia-tcp-udp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:tcp-udp'}
+YANG module 235: {'module': 'srl_nokia-terminal-device', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:chassis:terminal-device'}
+YANG module 236: {'module': 'srl_nokia-tftp', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:tftp'}
+YANG module 237: {'module': 'srl_nokia-timezone', 'revision': '2020-06-30', 'namespace_uri': 'urn:nokia.com:srlinux:linux:timezone'}
+YANG module 238: {'module': 'srl_nokia-tls', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:linux:tls'}
+YANG module 239: {'module': 'srl_nokia-traffic-engineering', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:te:traffic-engineering'}
+YANG module 240: {'module': 'srl_nokia-transport-security', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:macsec:transport-security'}
+YANG module 241: {'module': 'srl_nokia-tunnel', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:vxlan:tunnel'}
+YANG module 242: {'module': 'srl_nokia-tunnel-interfaces', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:vxlan:tunnel-interfaces'}
+YANG module 243: {'module': 'srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:tunnel-interfaces-vxlan-interface-bridge-table'}
+YANG module 244: {'module': 'srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-multicast-destinations', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mcid:tunnel-interfaces-vxlan-interface-bridge-table-multicast-destinations'}
+YANG module 245: {'module': 'srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-unicast-destinations', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:l2-mac:tunnel-interfaces-vxlan-interface-bridge-table-unicast-destinations'}
+YANG module 246: {'module': 'srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-unicast-es-destination-vteps', 'revision': '2021-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:vxlan:tunnel-interfaces-vxlan-interface-bridge-table-unicast-es-destination-vteps'}
+YANG module 247: {'module': 'srl_nokia-tunnel-tables', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:fib:tunnel-tables'}
+YANG module 248: {'module': 'srl_nokia-twamp', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:twamp:twamp'}
+YANG module 249: {'module': 'srl_nokia-vxlan-tunnel-vtep', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:vxlan:vxlan-tunnel-vtep'}
+YANG module 250: {'module': 'yang', 'revision': '2017-02-20', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:1'}
+YANG module 251: {'module': 'ietf-datastores', 'revision': '2018-02-14', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-datastores'}
+YANG module 252: {'module': 'ietf-inet-types', 'revision': '2013-07-15', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-inet-types'}
+YANG module 253: {'module': 'ietf-yang-metadata', 'revision': '2016-08-05', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-yang-metadata'}
+YANG module 254: {'module': 'ietf-yang-types', 'revision': '2013-07-15', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-yang-types'}
+YANG module 255: {'module': 'openconfig-extensions', 'revision': '2024-09-19', 'namespace_uri': 'http://openconfig.net/yang/openconfig-ext'}
+YANG module 256: {'module': 'openconfig-metadata', 'revision': '2020-08-06', 'namespace_uri': 'http://openconfig.net/yang/openconfig-metadata'}
+YANG module 257: {'module': 'srl_nokia-aaa-radius', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:aaa-radius'}
+YANG module 258: {'module': 'srl_nokia-aaa-tacacs', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:aaa-tacacs'}
+YANG module 259: {'module': 'srl_nokia-ethcfm-types', 'revision': '2024-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:ethcfm-types'}
+YANG module 260: {'module': 'srl_nokia-flexible-algorithms-types', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:flexible-algorithms-types'}
+YANG module 261: {'module': 'srl_nokia-gnmi', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:grpc:gnmi'}
+YANG module 262: {'module': 'srl_nokia-isis-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:isis-types'}
+YANG module 263: {'module': 'srl_nokia-mcast-cac', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mcast-cac:mcast-cac'}
+YANG module 264: {'module': 'srl_nokia-mcast-cac-types', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:mcast-cac:mcast-cac-types'}
+YANG module 265: {'module': 'srl_nokia-oam-pm', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:oam-pm'}
+YANG module 266: {'module': 'srl_nokia-oam-pm-types', 'revision': '2025-10-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:oam-pm-types'}
+YANG module 267: {'module': 'srl_nokia-ospf-types', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:ospf-types'}
+YANG module 268: {'module': 'srl_nokia-p4rt', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:grpc:p4rt'}
+YANG module 269: {'module': 'srl_nokia-policy-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:general:policy-types'}
+YANG module 270: {'module': 'srl_nokia-protection-policies', 'revision': '2025-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:tepolicy:protection-policies'}
+YANG module 271: {'module': 'srl_nokia-pw-tunnel', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:pw:pw-tunnel'}
+YANG module 272: {'module': 'srl_nokia-rsvp-types', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:mpls:rsvp-types'}
+YANG module 273: {'module': 'srl_nokia-service-activation-testhead-types', 'revision': '2025-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:sath:service-activation-testhead-types'}
+YANG module 274: {'module': 'srl_nokia-srv6-types', 'revision': '2026-03-31', 'namespace_uri': 'urn:nokia.com:srlinux:srv6:srv6-types'}
+YANG module 275: {'module': 'ietf-netconf', 'revision': '2011-06-01', 'features': 'candidate,confirmed-commit,rollback-on-error,validate,startup,url', 'deviations': 'ietf-srl-deviations', 'namespace_uri': 'urn:ietf:params:xml:ns:netconf:base:1.0'}
+YANG module 276: {'module': 'ietf-netconf-with-defaults', 'revision': '2011-06-01', 'deviations': 'ietf-srl-deviations', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-netconf-with-defaults'}
+YANG module 277: {'module': 'ietf-netconf-nmda', 'revision': '2019-01-07', 'features': 'origin,with-defaults', 'deviations': 'ietf-srl-deviations', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-netconf-nmda'}
+YANG module 278: {'module': 'ietf-srl-deviations', 'revision': '2024-06-24', 'namespace_uri': 'urn:nokia.com:srlinux:ietf:ietf-srl-deviations'}
+YANG module 279: {'module': 'ietf-origin', 'revision': '2018-02-14', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-origin'}
+YANG module 280: {'module': 'openconfig-aaa', 'revision': '2022-07-29', 'namespace_uri': 'http://openconfig.net/yang/aaa'}
+YANG module 281: {'module': 'openconfig-acl', 'revision': '2023-02-06', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/acl'}
+YANG module 282: {'module': 'openconfig-aft-network-instance', 'revision': '2023-04-25', 'namespace_uri': 'http://openconfig.net/yang/aft/ni'}
+YANG module 283: {'module': 'openconfig-aft-summary', 'revision': '2024-01-12', 'namespace_uri': 'http://openconfig.net/yang/aft-summary'}
+YANG module 284: {'module': 'openconfig-alarms', 'revision': '2026-02-24', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/alarms'}
+YANG module 285: {'module': 'openconfig-bgp-policy', 'revision': '2024-11-13', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/bgp-policy'}
+YANG module 286: {'module': 'openconfig-defined-sets', 'revision': '2022-12-14', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/defined-sets'}
+YANG module 287: {'module': 'openconfig-flexalgo', 'revision': '2023-05-24', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/flexalgo'}
+YANG module 288: {'module': 'openconfig-gnsi-acctz', 'revision': '2024-12-24', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'https://github.com/openconfig/yang/gnsi/acctz'}
+YANG module 289: {'module': 'openconfig-gnsi-authz', 'revision': '2024-02-13', 'namespace_uri': 'https://github.com/openconfig/yang/gnsi/authz'}
+YANG module 290: {'module': 'openconfig-gnsi-certz', 'revision': '2024-03-05', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'https://github.com/openconfig/yang/gnsi/certz'}
+YANG module 291: {'module': 'openconfig-gnsi-credentialz', 'revision': '2024-09-10', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'https://github.com/openconfig/yang/gnsi/credentialz'}
+YANG module 292: {'module': 'openconfig-gnsi-pathz', 'revision': '2024-02-13', 'namespace_uri': 'https://github.com/openconfig/yang/gnsi/pathz'}
+YANG module 293: {'module': 'openconfig-gribi', 'revision': '2021-04-06', 'namespace_uri': 'http://openconfig.net/yang/gribi'}
+YANG module 294: {'module': 'openconfig-if-aggregate', 'revision': '2025-04-22', 'namespace_uri': 'http://openconfig.net/yang/interfaces/aggregate'}
+YANG module 295: {'module': 'openconfig-if-ethernet', 'revision': '2025-11-20', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/interfaces/ethernet'}
+YANG module 296: {'module': 'openconfig-if-ethernet-ext', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/interfaces/ethernet-ext'}
+YANG module 297: {'module': 'openconfig-if-ip', 'revision': '2024-03-13', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/interfaces/ip'}
+YANG module 298: {'module': 'openconfig-if-sdn-ext', 'revision': '2024-02-21', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/interfaces/sdn-ext'}
+YANG module 299: {'module': 'openconfig-interfaces', 'revision': '2024-12-05', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/interfaces'}
+YANG module 300: {'module': 'openconfig-isis-lsdb-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/isis-lsdb-types'}
+YANG module 301: {'module': 'openconfig-isis-policy', 'revision': '2023-11-02', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/openconfig-isis-policy'}
+YANG module 302: {'module': 'openconfig-lacp', 'revision': '2024-09-24', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/lacp'}
+YANG module 303: {'module': 'openconfig-lldp', 'revision': '2018-11-21', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/lldp'}
+YANG module 304: {'module': 'openconfig-local-routing-network-instance', 'revision': '2025-07-01', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/local-routing-netinst'}
+YANG module 305: {'module': 'openconfig-network-instance', 'revision': '2025-03-26', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/network-instance'}
+YANG module 306: {'module': 'openconfig-p4rt', 'revision': '2023-12-13', 'namespace_uri': 'http://openconfig.net/yang/p4rt'}
+YANG module 307: {'module': 'openconfig-platform', 'revision': '2025-01-30', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform'}
+YANG module 308: {'module': 'openconfig-platform-controller-card', 'revision': '2024-04-10', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/controller-card'}
+YANG module 309: {'module': 'openconfig-platform-cpu', 'revision': '2018-11-21', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/cpu'}
+YANG module 310: {'module': 'openconfig-platform-fabric', 'revision': '2022-07-28', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/fabric'}
+YANG module 311: {'module': 'openconfig-platform-fan', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/platform/fan'}
+YANG module 312: {'module': 'openconfig-platform-healthz', 'revision': '2023-04-11', 'namespace_uri': 'http://openconfig.net/yang/platform/healthz'}
+YANG module 313: {'module': 'openconfig-platform-integrated-circuit', 'revision': '2022-04-20', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/integrated-circuit'}
+YANG module 314: {'module': 'openconfig-platform-linecard', 'revision': '2024-04-12', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/linecard'}
+YANG module 315: {'module': 'openconfig-platform-pipeline-counters', 'revision': '2023-10-08', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform-pipeline-counters'}
+YANG module 316: {'module': 'openconfig-platform-port', 'revision': '2023-03-22', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/port'}
+YANG module 317: {'module': 'openconfig-platform-psu', 'revision': '2018-11-21', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/psu'}
+YANG module 318: {'module': 'openconfig-platform-software', 'revision': '2021-06-16', 'namespace_uri': 'http://openconfig.net/yang/platform/software-module'}
+YANG module 319: {'module': 'openconfig-platform-storage', 'revision': '2024-08-26', 'namespace_uri': 'http://openconfig.net/yang/platform/storage'}
+YANG module 320: {'module': 'openconfig-platform-transceiver', 'revision': '2024-10-09', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/platform/transceiver'}
+YANG module 321: {'module': 'openconfig-platform-usb-port', 'revision': '2025-09-03', 'namespace_uri': 'http://openconfig.net/yang/platform/usb-port'}
+YANG module 322: {'module': 'openconfig-programming-errors', 'revision': '2022-10-11', 'namespace_uri': 'http://openconfig.net/yang/programming-errors'}
+YANG module 323: {'module': 'openconfig-qos', 'revision': '2023-10-13', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/qos'}
+YANG module 324: {'module': 'openconfig-rib-bgp-types', 'revision': '2019-03-14', 'namespace_uri': 'http://openconfig.net/yang/rib/bgp-types'}
+YANG module 325: {'module': 'openconfig-routing-policy', 'revision': '2024-11-26', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/routing-policy'}
+YANG module 326: {'module': 'openconfig-sampling', 'revision': '2022-06-21', 'namespace_uri': 'http://openconfig.net/yang/sampling'}
+YANG module 327: {'module': 'openconfig-sampling-sflow', 'revision': '2025-05-13', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/sampling/sflow'}
+YANG module 328: {'module': 'openconfig-segment-routing', 'revision': '2023-08-09', 'namespace_uri': 'http://openconfig.net/yang/sr'}
+YANG module 329: {'module': 'openconfig-srl-augments', 'revision': '2024-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:openconfig:openconfig-srl-augments'}
+YANG module 330: {'module': 'openconfig-srl-deviations', 'revision': '2026-07-31', 'namespace_uri': 'urn:nokia.com:srlinux:openconfig:openconfig-srl-deviations'}
+YANG module 331: {'module': 'openconfig-system', 'revision': '2024-09-24', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/system'}
+YANG module 332: {'module': 'openconfig-system-bootz', 'revision': '2023-06-16', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/system-bootz'}
+YANG module 333: {'module': 'openconfig-system-controlplane', 'revision': '2023-03-03', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/system-controlplane'}
+YANG module 334: {'module': 'openconfig-system-grpc', 'revision': '2024-05-29', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/system-grpc'}
+YANG module 335: {'module': 'openconfig-system-utilization', 'revision': '2023-02-13', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/system-utilization'}
+YANG module 336: {'module': 'openconfig-terminal-device', 'revision': '2025-12-11', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/terminal-device'}
+YANG module 337: {'module': 'openconfig-vlan', 'revision': '2023-02-07', 'deviations': 'openconfig-srl-deviations', 'namespace_uri': 'http://openconfig.net/yang/vlan'}
+YANG module 338: {'module': 'iana-if-type', 'revision': '2014-05-08', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:iana-if-type'}
+YANG module 339: {'module': 'ietf-interfaces', 'revision': '2014-05-08', 'namespace_uri': 'urn:ietf:params:xml:ns:yang:ietf-interfaces'}
+YANG module 340: {'module': 'openconfig-aaa-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/aaa/types'}
+YANG module 341: {'module': 'openconfig-aft', 'revision': '2025-07-17', 'namespace_uri': 'http://openconfig.net/yang/aft'}
+YANG module 342: {'module': 'openconfig-aft-types', 'revision': '2025-01-28', 'namespace_uri': 'http://openconfig.net/yang/fib-types'}
+YANG module 343: {'module': 'openconfig-alarm-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/alarms/types'}
+YANG module 344: {'module': 'openconfig-bfd', 'revision': '2025-03-18', 'namespace_uri': 'http://openconfig.net/yang/bfd'}
+YANG module 345: {'module': 'openconfig-bgp', 'revision': '2025-04-18', 'namespace_uri': 'http://openconfig.net/yang/bgp'}
+YANG module 346: {'module': 'openconfig-bgp-types', 'revision': '2024-09-06', 'namespace_uri': 'http://openconfig.net/yang/bgp-types'}
+YANG module 347: {'module': 'openconfig-evpn', 'revision': '2024-08-14', 'namespace_uri': 'http://openconfig.net/yang/evpn'}
+YANG module 348: {'module': 'openconfig-evpn-types', 'revision': '2021-06-21', 'namespace_uri': 'http://openconfig.net/yang/evpn-types'}
+YANG module 349: {'module': 'openconfig-gnsi', 'revision': '2024-02-13', 'namespace_uri': 'http://openconfig.net/yang/gnsi'}
+YANG module 350: {'module': 'openconfig-icmpv4-types', 'revision': '2023-01-26', 'namespace_uri': 'http://openconfig.net/yang/openconfig-icmpv4-types'}
+YANG module 351: {'module': 'openconfig-icmpv6-types', 'revision': '2023-05-02', 'namespace_uri': 'http://openconfig.net/yang/openconfig-icmpv6-types'}
+YANG module 352: {'module': 'openconfig-igmp', 'revision': '2023-02-03', 'namespace_uri': 'http://openconfig.net/yang/igmp'}
+YANG module 353: {'module': 'openconfig-igmp-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/igmp/types'}
+YANG module 354: {'module': 'openconfig-inet-types', 'revision': '2024-01-05', 'namespace_uri': 'http://openconfig.net/yang/types/inet'}
+YANG module 355: {'module': 'openconfig-isis', 'revision': '2024-02-28', 'namespace_uri': 'http://openconfig.net/yang/openconfig-isis'}
+YANG module 356: {'module': 'openconfig-isis-types', 'revision': '2022-02-11', 'namespace_uri': 'http://openconfig.net/yang/isis-types'}
+YANG module 357: {'module': 'openconfig-keychain', 'revision': '2024-05-30', 'namespace_uri': 'http://openconfig.net/yang/oc-keychain'}
+YANG module 358: {'module': 'openconfig-keychain-types', 'revision': '2024-08-27', 'namespace_uri': 'http://openconfig.net/yang/oc-keychain-types'}
+YANG module 359: {'module': 'openconfig-license', 'revision': '2020-04-22', 'namespace_uri': 'http://openconfig.net/yang/license'}
+YANG module 360: {'module': 'openconfig-lldp-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/lldp/types'}
+YANG module 361: {'module': 'openconfig-local-routing', 'revision': '2025-07-01', 'namespace_uri': 'http://openconfig.net/yang/local-routing'}
+YANG module 362: {'module': 'openconfig-messages', 'revision': '2024-07-15', 'namespace_uri': 'http://openconfig.net/yang/messages'}
+YANG module 363: {'module': 'openconfig-mpls', 'revision': '2024-06-19', 'namespace_uri': 'http://openconfig.net/yang/mpls'}
+YANG module 364: {'module': 'openconfig-mpls-ldp', 'revision': '2023-02-06', 'namespace_uri': 'http://openconfig.net/yang/ldp'}
+YANG module 365: {'module': 'openconfig-mpls-rsvp', 'revision': '2023-02-06', 'namespace_uri': 'http://openconfig.net/yang/rsvp'}
+YANG module 366: {'module': 'openconfig-mpls-sr', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/mpls-sr'}
+YANG module 367: {'module': 'openconfig-mpls-types', 'revision': '2023-12-14', 'namespace_uri': 'http://openconfig.net/yang/mpls-types'}
+YANG module 368: {'module': 'openconfig-network-instance-l3', 'revision': '2022-11-08', 'namespace_uri': 'http://openconfig.net/yang/network-instance-l3'}
+YANG module 369: {'module': 'openconfig-network-instance-static', 'revision': '2025-08-05', 'namespace_uri': 'http://openconfig.net/yang/network-instance-static'}
+YANG module 370: {'module': 'openconfig-network-instance-types', 'revision': '2021-07-14', 'namespace_uri': 'http://openconfig.net/yang/network-instance-types'}
+YANG module 371: {'module': 'openconfig-ospf', 'revision': '2025-02-13', 'namespace_uri': 'http://openconfig.net/yang/ospf'}
+YANG module 372: {'module': 'openconfig-ospf-types', 'revision': '2025-02-13', 'namespace_uri': 'http://openconfig.net/yang/ospf-types'}
+YANG module 373: {'module': 'openconfig-ospfv2', 'revision': '2024-06-17', 'namespace_uri': 'http://openconfig.net/yang/ospfv2'}
+YANG module 374: {'module': 'openconfig-packet-match', 'revision': '2023-03-01', 'namespace_uri': 'http://openconfig.net/yang/header-fields'}
+YANG module 375: {'module': 'openconfig-packet-match-types', 'revision': '2023-01-29', 'namespace_uri': 'http://openconfig.net/yang/packet-match-types'}
+YANG module 376: {'module': 'openconfig-pcep', 'revision': '2023-04-25', 'namespace_uri': 'http://openconfig.net/yang/pcep'}
+YANG module 377: {'module': 'openconfig-pim', 'revision': '2024-12-06', 'namespace_uri': 'http://openconfig.net/yang/pim'}
+YANG module 378: {'module': 'openconfig-pim-types', 'revision': '2024-05-31', 'namespace_uri': 'http://openconfig.net/yang/pim/types'}
+YANG module 379: {'module': 'openconfig-platform-types', 'revision': '2026-05-19', 'namespace_uri': 'http://openconfig.net/yang/platform-types'}
+YANG module 380: {'module': 'openconfig-policy-forwarding', 'revision': '2025-12-16', 'namespace_uri': 'http://openconfig.net/yang/policy-forwarding'}
+YANG module 381: {'module': 'openconfig-policy-types', 'revision': '2024-05-14', 'namespace_uri': 'http://openconfig.net/yang/policy-types'}
+YANG module 382: {'module': 'openconfig-procmon', 'revision': '2019-03-15', 'namespace_uri': 'http://openconfig.net/yang/system/procmon'}
+YANG module 383: {'module': 'openconfig-qos-types', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/qos-types'}
+YANG module 384: {'module': 'openconfig-rib-bgp', 'revision': '2022-12-20', 'namespace_uri': 'http://openconfig.net/yang/rib/bgp'}
+YANG module 385: {'module': 'openconfig-segment-routing-types', 'revision': '2020-02-04', 'namespace_uri': 'http://openconfig.net/yang/segment-routing-types'}
+YANG module 386: {'module': 'openconfig-srte-policy', 'revision': '2021-07-28', 'namespace_uri': 'http://openconfig.net/yang/segment-routing/srte-policy'}
+YANG module 387: {'module': 'openconfig-system-logging', 'revision': '2024-08-20', 'namespace_uri': 'http://openconfig.net/yang/system/logging'}
+YANG module 388: {'module': 'openconfig-system-terminal', 'revision': '2018-11-21', 'namespace_uri': 'http://openconfig.net/yang/system/terminal'}
+YANG module 389: {'module': 'openconfig-transport-types', 'revision': '2024-07-24', 'namespace_uri': 'http://openconfig.net/yang/transport-types'}
+YANG module 390: {'module': 'openconfig-types', 'revision': '2024-01-31', 'namespace_uri': 'http://openconfig.net/yang/openconfig-types'}
+YANG module 391: {'module': 'openconfig-vlan-types', 'revision': '2022-05-24', 'namespace_uri': 'http://openconfig.net/yang/vlan-types'}
+YANG module 392: {'module': 'openconfig-yang-types', 'revision': '2024-05-30', 'namespace_uri': 'http://openconfig.net/yang/types/yang'}
+
+
+- NETCONF server extra capabilities supported by the network device clab-srlinux-testbed-r1: 
+
+NETCONF extra capability 1: urn:ietf:params:netconf:base:1.0
+
+NETCONF extra capability 2: urn:ietf:params:netconf:base:1.1
+
+NETCONF extra capability 3: urn:ietf:params:netconf:capability:candidate:1.0
+
+NETCONF extra capability 4: urn:ietf:params:netconf:capability:confirmed-commit:1.1
+
+NETCONF extra capability 5: urn:ietf:params:netconf:capability:rollback-on-error:1.0
+
+NETCONF extra capability 6: urn:ietf:params:netconf:capability:validate:1.0
+
+NETCONF extra capability 7: urn:ietf:params:netconf:capability:validate:1.1
+
+NETCONF extra capability 8: urn:ietf:params:netconf:capability:startup:1.0
+
+NETCONF extra capability 9: urn:ietf:params:netconf:capability:url:1.0
+
+NETCONF extra capability 10: urn:ietf:params:netconf:capability:with-defaults:1.0
+
+NETCONF extra capability 11: urn:ietf:params:netconf:capability:with-operational-defaults:1.0
+
+NETCONF extra capability 12: urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring
+
+NETCONF extra capability 13: urn:ietf:params:netconf:capability:yang-library:1.1
+
+
+- NETCONF client capabilities: 
+
+urn:ietf:params:netconf:base:1.0
+urn:ietf:params:netconf:base:1.1
+urn:ietf:params:netconf:capability:writable-running:1.0
+urn:ietf:params:netconf:capability:candidate:1.0
+urn:ietf:params:netconf:capability:confirmed-commit:1.0
+urn:ietf:params:netconf:capability:rollback-on-error:1.0
+urn:ietf:params:netconf:capability:startup:1.0
+urn:ietf:params:netconf:capability:url:1.0?scheme=http,ftp,file,https,sftp
+urn:ietf:params:netconf:capability:validate:1.0
+urn:ietf:params:netconf:capability:xpath:1.0
+urn:ietf:params:netconf:capability:notification:1.0
+urn:ietf:params:netconf:capability:interleave:1.0
+urn:ietf:params:netconf:capability:with-defaults:1.0
