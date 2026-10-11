@@ -103,18 +103,68 @@ created activities/module-1/r1-capabilities.txt
 
 Con el script `download-yang-modules-schemas-srlinux.py` descargamos los esquemas de todos los módulos YANG que implementa el router y armamos un catálogo local en la carpeta `yang-models-srlinux`. Después usamos `pyang` (formatos `tree` y `xpath`) para revisar el módulo `ietf-yang-library@2019-01-04.yang` y lanzamos una consulta GET con filtro *subtree* mediante `get-rpc-yang-library-srlinux.py`.
 
+
+python download-yang-modules-schemas-srlinux.py clab-srlinux-testbed-r1
+saved output in activities/module-1/pyang-tree-ietflib.txt 
+
+
+pyang -f xpath ietf-yang-library@2019-01-04.yang
+saved output in activities/module-1/pyang-xpath-ietflib.txt
+
+python get-rpc-yang-library-srlinux.py <container_name> > get-rpc-yang-library-srlinux-output.xml 
+python get-rpc-yang-library-srlinux.py clab-srlinux-testbed-r1 > get-rpc-yang-library-srlinux-output.xml
+saved output in activities/module-1/get-rpc-yang-library-srlinux-output.xml
+
 **Pregunta 2.** Propósito del módulo `ietf-yang-library` y su relación con las capacidades; *datastores* que implementa SR Linux; soporte de NMDA (RFC 8342) y módulo asociado; número de módulos de Nokia, del IETF y de OpenConfig.
 
-> _[PENDIENTE: análisis y respuesta]_
+> **Propósito.** `ietf-yang-library` (RFC 8525) describe el propio servidor. Todos sus nodos son de solo lectura (`+--ro`) e indican qué módulos YANG implementa el equipo (nombre, revisión, *namespace*, ubicación, *features* y *deviations*), cuáles se importan solo por sus tipos (`import-only-module`) y en qué *datastores* se aplica cada conjunto de módulos (`module-set` → `schema` → `datastore`). El nodo `content-id` cambia cuando cambia ese conjunto.
 >
-> _[PENDIENTE: árbol `pyang` relevante y extracto del XML de respuesta]_
+> **Relación con las capacidades.** Sí la tiene. El servidor anuncia en su `<hello>` la capacidad `urn:ietf:params:netconf:capability:yang-library:1.1`, que indica que la lista completa de modelos se puede consultar con un `<get>` sobre `/yang-library`. Las capacidades dan una lista plana de módulos, y la YANG library da la misma información estructurada y asociada a cada *datastore*.
+>
+> **Datastores.** La consulta GET devuelve cinco, todos asociados al esquema `nokia`: `ds:running`, `ds:candidate`, `ds:startup`, `ds:intended` y `ds:operational`.
+> <datastore>
+                <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:candidate</name>
+                <schema>nokia</schema>
+            </datastore>
+            <datastore>
+                <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:intended</name>
+                <schema>nokia</schema>
+            </datastore>
+            <datastore>
+                <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:operational</name>
+                <schema>nokia</schema>
+            </datastore>
+            <datastore>
+                <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:running</name>
+                <schema>nokia</schema>
+            </datastore>
+            <datastore>
+                <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:startup</name>
+                <schema>nokia</schema>
+            </datastore>
+>
+> **NMDA.** Sí lo implementa. Expone `intended` y `operational`, separados de los *datastores* de configuración, y usa la versión NMDA de la YANG library (`datastore`/`schema`, con la rama `modules-state` marcada como obsoleta). Entre los módulos soportados está `ietf-netconf-nmda@2019-01-07` (RFC 8526), que añade las operaciones `get-data` y `edit-data`. Estas operaciones reciben un parámetro `datastore` (`ds:datastore-ref`) con el que se elige el *datastore* NMDA sobre el que actuar, y admiten `with-origin` para saber de dónde procede cada valor operativo. El equipo importa también `ietf-datastores` (identidades `ds:*`) e `ietf-origin`.
+>
+> ```
+> +--ro datastore* [name]
+> |  +--ro name      ds:datastore-ref
+> |  +--ro schema    -> ../../schema/name
+> ```
+> ```xml
+> <datastore>
+>     <name xmlns:ds="urn:ietf:params:xml:ns:yang:ietf-datastores">ds:operational</name>
+>     <schema>nokia</schema>
+> </datastore>
+> ```
+>
+> **Origen de los módulos.** Los 392 módulos descargados se clasifican por su *namespace*. Por eso `ietf-srl-deviations`, `openconfig-srl-deviations` y `openconfig-srl-augments` cuentan como Nokia, ya que su *namespace* es `urn:nokia.com:...`.
 >
 > | Origen de los módulos | Cantidad |
 > |---|---|
-> | Nokia SR Linux (propietarios) | _[PENDIENTE]_ |
-> | IETF | _[PENDIENTE]_ |
-> | OpenConfig | _[PENDIENTE]_ |
-> | Otros | _[PENDIENTE]_ |
+> | Nokia SR Linux (propietarios) | 268 |
+> | IETF | 11 |
+> | OpenConfig | 111 |
+> | Otros (`iana-if-type` de IANA y `yang`, de extensiones de YANG) | 2 |
 
 #### 1.1.3. NETCONF para consultar la configuración y el estado operativo
 
