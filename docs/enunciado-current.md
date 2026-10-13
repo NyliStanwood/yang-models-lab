@@ -17,6 +17,8 @@ En concreto, para capturar el tráfico de gestión gNMI deberá utilizar la inte
 ```bash
 ./clab-capture-traffic.sh clab-srlinux-testbed-r1  mgmt0
 ```
+TODO =====> redo capture of traffic 1 by 1
+
 
 Mientras está activa la captura de tráfico, realizaremos las consultas con gNMI ejecutadas anteriormente para obtener las capacidades del router y para consultar el estado operativo de una de sus interfaces de red. Incluiremos la opción `--log-tls-secret` en el comando de `gNMIc`, de modo que se registren en un fichero los secretos de la sesión TLS establecida en la conexión HTTP/2, que posteriormente permitirá descifrar la comunicación  entre cliente y servidor gNMI. Por cada operación consultada con gNMI se generará un fichero de secretos TLS con el nombre  `<container_name>:57400.tlssecret.log`. El fichero generado con la primera consulta renómbrelo como `<container_name>-capabilities.tlssecret.log` mientras que el fichero generado con la segunda consulta renómbrelo como `<container_name>-get-rpc.tlssecret.log`.
 

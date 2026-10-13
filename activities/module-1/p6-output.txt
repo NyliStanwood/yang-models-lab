@@ -1,0 +1,20 @@
+// en una ventana lanzar wireshark con
+./clab-capture-traffic.sh clab-srlinux-testbed-r1  mgmt0
+
+//en otra ventana a obtener capabilities e interfaces
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify capabilities --log-tls-secret
+mv clab-srlinux-testbed-r1:57400.tlssecret.log /home/upm/yang-models-lab/activities/module-1/p6/clab-srlinux-testbed-r1-capabilities.tlssecret.log
+
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify get --path "/interface[name=ethernet-1/1]" --encoding JSON_IETF --log-tls-secret
+mv clab-srlinux-testbed-r1:57400.tlssecret.log /home/upm/yang-models-lab/activities/module-1/p6/clab-srlinux-testbed-r1-get-rpc.tlssecret.log
+
+Nota: Por defecto, el fichero con los secretos TLS se genera siempre con el mismo nombre <container_name>:57400.tlssecret, por lo que debe renombrarlo justo después de cada operación que realice con gNMIc, de lo contrario se sobreescribirá su contenido.
+
+
+guardar secrets como 
+clab-srlinux-testbed-r1-capabilities.tlssecret.log 
+clab-srlinux-testbed-r1-get-rpc.tlssecret.log
+clab-srlinux-testbed-r1-getConfig-rpc.tlssecret.log
+
+
+Una vez completadas las consultas y guardados los ficheros de secretos TLS de cada una de ellas, pare la captura de tráfico y guárdela con el nombre gnmi-traffic.pcap e
