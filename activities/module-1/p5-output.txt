@@ -1,0 +1,298 @@
+upm@vnxlab:~/shared/yang-lab/activities/module-1$ docker ps -a
+CONTAINER ID   IMAGE                            COMMAND                  CREATED         STATUS         PORTS                                  NAMES
+f9cfd0d99615   wbitt/network-multitool:latest   "/bin/sh /docker/ent…"   2 minutes ago   Up 2 minutes   80/tcp, 443/tcp, 1180/tcp, 11443/tcp   clab-srlinux-testbed-pc2
+a593ddbbb464   ghcr.io/nokia/srlinux:latest     "/tini -- /usr/local…"   2 minutes ago   Up 2 minutes                                          clab-srlinux-testbed-r1
+a2c96c3fb7db   wbitt/network-multitool:latest   "/bin/sh /docker/ent…"   2 minutes ago   Up 2 minutes   80/tcp, 443/tcp, 1180/tcp, 11443/tcp   clab-srlinux-testbed-pc1
+02908c066b48   ghcr.io/nokia/srlinux:latest     "/tini -- /usr/local…"   2 minutes ago   Up 2 minutes                                          clab-srlinux-testbed-r2
+
+
+gnmic -a <container_name>:57400 -u admin -p NokiaSrl1! get --path "/yang-library/datastore" --skip-verify --encoding JSON_IETF
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! get --path "/yang-library/datastore" --skip-verify --encoding JSON_IETF
+
+clab-srlinux-testbed-r1upm@vnxlab:~/shared/yang-lab/activities/module-1$ gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! get --path "/yang-library/datastore" --skip-verify --encoding JSON_IETF
+[
+  {
+    "source": "clab-srlinux-testbed-r1:57400",
+    "timestamp": 1791903931370609236,
+    "time": "2026-10-13T17:05:31.370609236+02:00",
+    "updates": [
+      {
+        "Path": "ietf-yang-library:yang-library",
+        "values": {
+          "ietf-yang-library:yang-library": {
+            "datastore": [
+              {
+                "name": "ietf-datastores:candidate",
+                "schema": "nokia"
+              },
+              {
+                "name": "ietf-datastores:intended",
+                "schema": "nokia"
+              },
+              {
+                "name": "ietf-datastores:operational",
+                "schema": "nokia"
+              },
+              {
+                "name": "ietf-datastores:running",
+                "schema": "nokia"
+              },
+              {
+                "name": "ietf-datastores:startup",
+                "schema": "nokia"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]
+
+
+upm@vnxlab:~/shared/yang-lab/activities/module-1/yang-models-srlinux$ gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify get \
+  --path "/interface[name=ethernet-1/1]" --type CONFIG --encoding JSON_IETF
+[
+  {
+    "source": "clab-srlinux-testbed-r1:57400",
+    "timestamp": 1791905972256966735,
+    "time": "2026-10-13T17:39:32.256966735+02:00",
+    "updates": [
+      {
+        "Path": "srl_nokia-interfaces:interface[name=ethernet-1/1]",
+        "values": {
+          "srl_nokia-interfaces:interface": {
+            "admin-state": "enable",
+            "subinterface": [
+              {
+                "index": 0,
+                "ipv4": {
+                  "address": [
+                    {
+                      "ip-prefix": "10.0.1.1/24"
+                    }
+                  ],
+                  "admin-state": "enable"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]
+upm@vnxlab:~/shared/yang-lab/activities/module-1/yang-models-srlinux$ gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify get \
+  --path "/interface[name=ethernet-1/1]" --encoding JSON_IETF
+[
+  {
+    "source": "clab-srlinux-testbed-r1:57400",
+    "timestamp": 1791906199738081145,
+    "time": "2026-10-13T17:43:19.738081145+02:00",
+    "updates": [
+      {
+        "Path": "srl_nokia-interfaces:interface[name=ethernet-1/1]",
+        "values": {
+          "srl_nokia-interfaces:interface": {
+            "admin-state": "enable",
+            "ethernet": {
+              "dac-link-training": false,
+              "flow-control": {
+                "receive": false
+              },
+              "forward-error-correction": {
+                "operational-host-if-fec": "disabled"
+              },
+              "hold-time": {
+                "down": 0,
+                "up": 0
+              },
+              "hw-mac-address": "1A:55:02:FF:00:01",
+              "lacp-port-priority": 32768,
+              "port-speed": "25G",
+              "srl_nokia-dot1x:dot1x": {
+                "srl_nokia-dot1x-tunneling:tunnel": {
+                  "oper-rule": "trap-to-cpu-untagged",
+                  "tunnel-all": false
+                }
+              },
+              "srl_nokia-interfaces-l2cp:l2cp-transparency": {
+                "lacp": {
+                  "oper-rule": "trap-to-cpu-untagged",
+                  "tunnel": false
+                },
+                "lldp": {
+                  "oper-rule": "trap-to-cpu-untagged",
+                  "tunnel": false
+                },
+                "ptp": {
+                  "oper-rule": "drop-tagged-and-untagged",
+                  "tunnel": false
+                },
+                "tunnel-all-l2cp": false,
+                "xstp": {
+                  "oper-rule": "drop-tagged-and-untagged",
+                  "tunnel": false
+                }
+              },
+              "statistics": {
+                "in-1024b-to-1518b-frames": "0",
+                "in-128b-to-255b-frames": "0",
+                "in-1519b-or-longer-frames": "0",
+                "in-256b-to-511b-frames": "0",
+                "in-512b-to-1023b-frames": "0",
+                "in-64b-frames": "0",
+                "in-65b-to-127b-frames": "8",
+                "in-crc-error-frames": "0",
+                "in-fragment-frames": "0",
+                "in-jabber-frames": "0",
+                "in-mac-pause-frames": "0",
+                "in-oversize-frames": "0",
+                "in-undersize-frames": "0",
+                "out-1024b-to-1518b-frames": "0",
+                "out-128b-to-255b-frames": "125",
+                "out-1519b-or-longer-frames": "0",
+                "out-256b-to-511b-frames": "0",
+                "out-512b-to-1023b-frames": "0",
+                "out-64b-frames": "5",
+                "out-65b-to-127b-frames": "0",
+                "out-mac-pause-frames": "0"
+              }
+            },
+            "forwarding-complex": "0",
+            "forwarding-mode": "store-and-forward",
+            "ifindex": 32768,
+            "last-change": "2026-10-13T14:41:05.957Z",
+            "linecard": 1,
+            "loopback-mode": "none",
+            "mtu": 9232,
+            "oper-state": "up",
+            "phy-group-members": [
+              "ethernet-1/1",
+              "ethernet-1/2",
+              "ethernet-1/3",
+              "ethernet-1/6"
+            ],
+            "sflow": {
+              "admin-state": "enable"
+            },
+            "srl_nokia-interfaces-vlans:tpid": "srl_nokia-interfaces-vlans:TPID_0X8100",
+            "srl_nokia-interfaces-vlans:vlan-tagging": false,
+            "statistics": {
+              "carrier-transitions": "0",
+              "in-broadcast-packets": "0",
+              "in-discarded-packets": "8",
+              "in-error-packets": "0",
+              "in-fcs-error-packets": "0",
+              "in-multicast-packets": "0",
+              "in-octets": "592",
+              "in-packets": "8",
+              "in-unicast-packets": "0",
+              "interface-transitions": "1",
+              "link-transitions": "0",
+              "out-broadcast-packets": "5",
+              "out-discarded-packets": "0",
+              "out-error-packets": "0",
+              "out-mirror-octets": "0",
+              "out-mirror-packets": "0",
+              "out-multicast-packets": "125",
+              "out-octets": "22445",
+              "out-packets": "130",
+              "out-unicast-packets": "0"
+            },
+            "subinterface": [
+              {
+                "admin-state": "enable",
+                "ifindex": 65536,
+                "index": 0,
+                "ip-mtu": 1500,
+                "ipv4": {
+                  "address": [
+                    {
+                      "ip-prefix": "10.0.1.1/24",
+                      "origin": "static",
+                      "primary": [
+                        null
+                      ],
+                      "status": "preferred"
+                    }
+                  ],
+                  "admin-state": "enable",
+                  "allow-directed-broadcast": false,
+                  "srl_nokia-interfaces-nbr:arp": {
+                    "duplicate-address-detection": true,
+                    "learn-unsolicited": false,
+                    "proxy-arp": false,
+                    "timeout": 14400
+                  },
+                  "unnumbered": {
+                    "admin-state": "disable"
+                  }
+                },
+                "ipv6": {
+                  "admin-state": "disable",
+                  "srl_nokia-interfaces-nbr:neighbor-discovery": {
+                    "duplicate-address-detection": true,
+                    "learn-unsolicited": "none",
+                    "limit": {
+                      "log-only": false,
+                      "warning-threshold-pct": 90
+                    },
+                    "proxy-nd": false,
+                    "reachable-time": 30,
+                    "stale-time": 14400
+                  },
+                  "srl_nokia-interfaces-router-adv:router-advertisement": {
+                    "router-role": {
+                      "admin-state": "disable",
+                      "current-hop-limit": 64,
+                      "managed-configuration-flag": false,
+                      "max-advertisement-interval": 600,
+                      "min-advertisement-interval": 200,
+                      "other-configuration-flag": false,
+                      "reachable-time": 0,
+                      "retransmit-time": 0,
+                      "router-lifetime": 1800
+                    }
+                  }
+                },
+                "last-change": "2026-10-13T14:41:05.957Z",
+                "name": "ethernet-1/1.0",
+                "oper-state": "up",
+                "statistics": {
+                  "in-discarded-packets": "8",
+                  "in-forwarded-octets": "0",
+                  "in-forwarded-packets": "0",
+                  "in-matched-ra-packets": "0",
+                  "in-octets": "592",
+                  "in-packets": "8",
+                  "out-discarded-packets": "0",
+                  "out-forwarded-octets": "0",
+                  "out-forwarded-packets": "0",
+                  "out-octets": "0",
+                  "out-originated-octets": "0",
+                  "out-originated-packets": "0",
+                  "out-packets": "0"
+                },
+                "type": "srl_nokia-interfaces:routed"
+              }
+            ],
+            "traffic-rate": {
+              "in-bps": "0",
+              "out-bps": "0"
+            },
+            "transceiver": {
+              "ddm-events": true,
+              "oper-down-reason": "not-present",
+              "oper-state": "down",
+              "srl_nokia-platform-healthz:healthz": {
+                "status": "unspecified"
+              },
+              "tx-laser": false
+            }
+          }
+        }
+      }
+    ]
+  }
+]

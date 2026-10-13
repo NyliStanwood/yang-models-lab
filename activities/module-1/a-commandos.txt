@@ -1,0 +1,30 @@
+git clone https://github.com/NyliStanwood/yang-models-lab.git
+
+cd ~/shared
+git clone https://github.com/educaredes/yang-lab.git
+./deploy-srlinux-testbed.sh
+
+/home/upm/yang-models-lab/activities/module-1/some-file.txt
+
+-----
+docker ps -a
+container name ----> clab-srlinux-testbed-r1
+ssh admin@<container_name>
+
+(usuario admin y contraseña NokiaSrl1!) 
+
+---
+OR
+----
+docker exec -it <container_name> bash
+docker exec -it <container_name> sr_cli
+
+-----
+python download-yang-modules-schemas-srlinux.py clab-srlinux-testbed-r1
+cd yang-models-srlinux
+
+pyang -f tree ietf-yang-library@2019-01-04.yang
+pyang -f xpath ietf-yang-library@2019-01-04.yang
+
+pyang -f tree srl_nokia-interfaces@2026-07-31.yang
+pyang -f xpath srl_nokia-interfaces@2026-07-31.yang

@@ -231,20 +231,85 @@ Repetimos el descubrimiento de capacidades, ahora con el cliente `gNMIc`, y real
 
 **Pregunta 4.** Información de las capacidades en gNMI; comparación con NETCONF (capacidades operativas, diferencias en los modelos anunciados, negociación de versión y codificación).
 
-> _[PENDIENTE: análisis y respuesta]_
->
-> _[PENDIENTE: extracto de la salida de `gnmic capabilities`]_
+```bash
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify capabilities > p4-output.txt
+```
+
+Extracto de la salida (`p4-output.txt`):
+
+```text
+gNMI version: 0.10.0
+supported models:
+  - urn:nokia.com:srlinux:aaa:aaa:srl_nokia-aaa, Nokia, 2026-07-31
+  - http://openconfig.net/yang/aaa:openconfig-aaa, OpenConfig working group, 2022-07-29
+  ...
+supported encodings:
+  - JSON_IETF
+  - PROTO
+  - ASCII
+  - 52
+  - 42
+  ...
+```
+
+**Información proporcionada.** La respuesta contiene la versión de gNMI (0.10.0), la lista de modelos soportados (nombre, organización y versión/revisión) y las codificaciones soportadas: `JSON_IETF`, `PROTO` y `ASCII`, además de los valores 42–53, que son codificaciones propietarias de Nokia y quedan fuera del enumerado estándar de gNMI.
+
+**¿Capacidades operativas más allá de los modelos YANG?** No, salvo la versión y las codificaciones. En NETCONF el `<hello>` anuncia capacidades del protocolo y del equipo: `base:1.0/1.1`, `candidate`, `confirmed-commit`, `rollback-on-error`, `validate`, `startup`, `url`, `with-defaults`… Los módulos se anuncian además con sus *features* y *deviations*. gNMI no informa de nada de esto, porque la semántica de sus operaciones (`Get`, `Set`, `Subscribe`) está fijada por la especificación: no hay datastores que elegir y el `Set` es siempre transaccional.
+
+**¿Diferencias en los modelos?** Sí. gNMI anuncia 384 modelos y NETCONF 392, aunque los modelos de configuración y estado implementados (`srl_nokia-*`, `openconfig-*`) coinciden en nombre y revisión.
+
+- **Solo en NETCONF (80):** los módulos propios de NETCONF/NMDA (`ietf-netconf`, `ietf-netconf-nmda`, `ietf-netconf-with-defaults`, `ietf-datastores`, `ietf-origin`, `ietf-srl-deviations`…) y los módulos *import-only* de la yang-library (`*-types`, `ietf-interfaces`, `openconfig-bgp`, `srl_nokia-gnmi`…). gNMI solo lista los modelos implementados.
+- **Solo en gNMI (76):** los módulos `srl_nokia-tools-*`, que modelan el árbol `/tools` de acciones operativas (borrar estadísticas, reiniciar protocolos…). SR Linux los expone por gNMI pero no por NETCONF.
+
+**¿Negociación implícita en NETCONF?** De versión, sí: en el intercambio de `<hello>` ambos extremos anuncian `base:1.0` y `base:1.1`, y se usa la mayor común (1.1, con *chunked framing*). De codificación, no, porque NETCONF usa siempre XML. En gNMI no hay *handshake*: el cliente elige la codificación en cada petición (campo `encoding`) y el servidor responde con error si no la soporta.
 
 **Pregunta 5.** Consultas `get` de configuración y de estado de `ethernet-1/1`; coherencia con el modelo YANG y con las respuestas de NETCONF.
 
-> _[PENDIENTE: comandos `gnmic` utilizados]_
->
-> ```bash
-> # [PENDIENTE] consulta de configuración
-> # [PENDIENTE] consulta de estado
-> ```
->
-> _[PENDIENTE: capturas de la ejecución exitosa y respuesta]_
+Según el árbol de `pyang` (`pyang-tree-nokia-interfaces.txt`), `interface` es una lista en la raíz con clave `name`. Por eso el *path* es `/interface[name=ethernet-1/1]`, equivalente al nodo de contenido `<name>ethernet-1/1</name>` del filtro *subtree* de NETCONF. El tipo de datos se elige con la opción `--type` de `gnmic get` (`ALL` por defecto, `CONFIG`, `STATE` u `OPERATIONAL`).
+
+```bash
+# Consulta de configuración
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify get \
+  --path "/interface[name=ethernet-1/1]" --type CONFIG --encoding JSON_IETF
+
+# Consulta de estado operativo
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify get \
+  --path "/interface[name=ethernet-1/1]" --type STATE --encoding JSON_IETF
+```
+
+Respuesta de la consulta de configuración:
+
+```json
+"Path": "srl_nokia-interfaces:interface[name=ethernet-1/1]",
+"values": {
+  "srl_nokia-interfaces:interface": {
+    "admin-state": "enable",
+    "subinterface": [
+      { "index": 0,
+        "ipv4": { "address": [ { "ip-prefix": "10.0.1.1/24" } ], "admin-state": "enable" } }
+    ]
+  }
+}
+```
+
+Extracto de la respuesta de la consulta de estado:
+
+```json
+"srl_nokia-interfaces:interface": {
+  "ifindex": 32768,
+  "oper-state": "up",
+  "last-change": "2026-10-13T14:41:05.957Z",
+  "ethernet": { "hw-mac-address": "1A:55:02:FF:00:01", ... },
+  "statistics": { "in-octets": "666", ... },
+  ...
+}
+```
+
+**¿Coincide con lo esperado?** Sí.
+
+- **Con el modelo YANG:** `CONFIG` devuelve solo nodos `rw` del árbol (`admin-state`, `subinterface/ipv4/address`), y `STATE` devuelve los nodos `ro` (`oper-state`, `ifindex`, `last-change`, `hw-mac-address`, `statistics`…). Las claves de las listas (`name`, `index`, `ip-prefix`) aparecen en ambas para identificar las entradas.
+- **Con NETCONF:** la respuesta `CONFIG` es idéntica a la de `<get-config>` (`P3_2_nokia-getConfig-interface-r1-e1.xml`): `admin-state` `enable` y la dirección `10.0.1.1/24` en la subinterfaz 0. La respuesta `STATE` contiene los mismos datos de estado que `<get>` (`P3_1_nokia-interface-r1-e1.xml`). La diferencia es que `<get>` mezcla configuración y estado, por lo que su equivalente exacto en gNMI es `--type ALL` (la opción por defecto). Los valores que cambian con el tiempo (contadores, `last-change`, MAC) no coinciden porque la consulta NETCONF se hizo antes de redesplegar el escenario.
+- **Formato:** el contenido es el mismo, pero NETCONF lo codifica en XML con el *namespace* del módulo, y gNMI en JSON_IETF con el nombre del módulo como prefijo (`srl_nokia-interfaces:interface`).
 
 #### 1.2.2. Análisis del tráfico de gestión en gNMI
 

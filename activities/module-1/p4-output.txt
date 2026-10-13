@@ -1,0 +1,417 @@
+upm@vnxlab:~/shared/yang-lab/activities/module-1$ docker ps -a
+CONTAINER ID   IMAGE                            COMMAND                  CREATED         STATUS         PORTS                                  NAMES
+f9cfd0d99615   wbitt/network-multitool:latest   "/bin/sh /docker/ent…"   2 minutes ago   Up 2 minutes   80/tcp, 443/tcp, 1180/tcp, 11443/tcp   clab-srlinux-testbed-pc2
+a593ddbbb464   ghcr.io/nokia/srlinux:latest     "/tini -- /usr/local…"   2 minutes ago   Up 2 minutes                                          clab-srlinux-testbed-r1
+a2c96c3fb7db   wbitt/network-multitool:latest   "/bin/sh /docker/ent…"   2 minutes ago   Up 2 minutes   80/tcp, 443/tcp, 1180/tcp, 11443/tcp   clab-srlinux-testbed-pc1
+02908c066b48   ghcr.io/nokia/srlinux:latest     "/tini -- /usr/local…"   2 minutes ago   Up 2 minutes                                          clab-srlinux-testbed-r2
+
+
+gnmic -a <container_name>:57400 -u admin -p NokiaSrl1! --skip-verify capabilities
+gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify capabilities
+
+OUTPUT
+    upm@vnxlab:~/shared/yang-lab/activities/module-1$ gnmic -a clab-srlinux-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify capabilities
+gNMI version: 0.10.0
+supported models:
+  - urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring:ietf-netconf-monitoring, IETF NETCONF (Network Configuration) Working Group, 2010-10-04
+  - urn:ietf:params:xml:ns:yang:ietf-yang-library:ietf-yang-library, IETF NETCONF (Network Configuration) Working Group, 2019-01-04
+  - urn:nokia.com:srlinux:aaa:aaa:srl_nokia-aaa, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:aaa:aaa-password:srl_nokia-aaa-password, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:aaa:aaa-types:srl_nokia-aaa-types, Nokia, 2023-03-31
+  - urn:nokia.com:srlinux:acl:acl:srl_nokia-acl, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:acl-gbp:srl_nokia-acl-gbp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:acl-policers:srl_nokia-acl-policers, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:acl-qos:srl_nokia-acl-qos, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fib:aft:srl_nokia-aft, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:static-route:aggregate-routes:srl_nokia-aggregate-routes, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:app:app-mgmt:srl_nokia-app-mgmt, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bfd:bfd:srl_nokia-bfd, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bgp:bgp:srl_nokia-bgp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bgp:bmp:srl_nokia-bgp-bmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bgp:bmp-types:srl_nokia-bgp-bmp-types, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bgp-evpn:srl_nokia-bgp-evpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mcid:bgp-evpn-bgp-instance-mpls-bridge-table-multicast-destinations:srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-multicast-destinations, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:bgp-evpn-bgp-instance-mpls-bridge-table-statistics:srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-statistics, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:bgp-evpn-bgp-instance-mpls-bridge-table-unicast-destinations:srl_nokia-bgp-evpn-bgp-instance-mpls-bridge-table-unicast-destinations, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:bgp-evpn-bgp-instance-vpws-destinations-remote-ac:srl_nokia-bgp-evpn-bgp-instance-vpws-destinations-remote-ac, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bgp-evpn-layer-3-neighbor-sync:srl_nokia-bgp-evpn-layer-3-neighbor-sync, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:multicast-evpn-gateway:srl_nokia-bgp-evpn-multicast-gateway, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bgp-ipvpn:srl_nokia-bgp-ipvpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bgp:bgp-vpn:srl_nokia-bgp-vpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:boot:srl_nokia-boot, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bridge-table:srl_nokia-bridge-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bridge-table-mac-duplication:srl_nokia-bridge-table-mac-duplication, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:bridge-table-mac-duplication-entries:srl_nokia-bridge-table-mac-duplication-entries, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bridge-table-mac-learning:srl_nokia-bridge-table-mac-learning, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac-learn:bridge-table-mac-learning-entries:srl_nokia-bridge-table-mac-learning-entries, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bridge-table-mac-limit:srl_nokia-bridge-table-mac-limit, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:bridge-table-mac-table:srl_nokia-bridge-table-mac-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-proxy-arp-nd:bridge-table-proxy-arp-nd:srl_nokia-bridge-table-proxy-arp-nd, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:bridge-table-reserved-macs:srl_nokia-bridge-table-reserved-macs, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:bridge-table-shg:srl_nokia-bridge-table-shg, Nokia, 2024-10-31
+  - urn:nokia.com:srlinux:l2-static-mac:bridge-table-static-mac:srl_nokia-bridge-table-static-mac, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:common:srl_nokia-common, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:configuration:srl_nokia-configuration, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:configuration-role:srl_nokia-configuration-role, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:csig:srl_nokia-congestion_signalling, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-mac-duplication-entries:srl_nokia-connection-point-bridge-table-mac-duplication-entries, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:l2-mac-learn:connection-point-bridge-table-mac-learning-entries:srl_nokia-connection-point-bridge-table-mac-learning-entries, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-mac-table:srl_nokia-connection-point-bridge-table-mac-table, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:l2-mac:connection-point-bridge-table-statistics:srl_nokia-connection-point-bridge-table-statistics, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:net-inst:connection-point-pseudowires:srl_nokia-connection-point-pseudowires, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dhcp:dhcp-server:srl_nokia-dhcp-server, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fhs:dhcp-server-guard:srl_nokia-dhcp-server-guard, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:dns:srl_nokia-dns, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dot1x:srl_nokia-dot1x, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dot1x-authenticator:srl_nokia-dot1x-authenticator, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:dot1x-tunneling:srl_nokia-dot1x-tunneling, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ethcfm:ethcfm:srl_nokia-ethcfm, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:event:event-handler:srl_nokia-event-handler, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:extensions:srl_nokia-extensions, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:features:srl_nokia-features, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:srl_nokia-first-hop-security-ip-mac-binding:srl_nokia-first-hop-security-ip-mac-binding, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:flexible-algorithms:srl_nokia-flexible-algorithms, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:flexible-algorithms-isis:srl_nokia-flexible-algorithms-isis, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:flexible-algorithms-segment-routing:srl_nokia-flexible-algorithms-segment-routing, Nokia, 2025-10-31
+  - urn:nokia.com:srlinux:linux:ftp:srl_nokia-ftp, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:aaa:gnsi-authz:srl_nokia-gnsi-authz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:gnsi-certz:srl_nokia-gnsi-certz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:gnsi-credentialz:srl_nokia-gnsi-credentialz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:aaa:gnsi-pathz:srl_nokia-gnsi-pathz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:grpc:gribi:srl_nokia-gribi, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:group-based-policy:srl_nokia-group-based-policy, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:grpc:grpc:srl_nokia-grpc, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:grpc:grpc-tunnel:srl_nokia-grpc-tunnel, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:icmp:srl_nokia-icmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:if-ip:srl_nokia-if-ip, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:if-ip-tags:srl_nokia-if-ip-tags, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:if-ip-urpf:srl_nokia-if-ip-urpf, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:if-mpls:srl_nokia-if-mpls, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:igmp:srl_nokia-igmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:igmp-snooping:srl_nokia-igmp-snooping, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:igmp-types:srl_nokia-igmp-types, Nokia, 2023-03-31
+  - urn:nokia.com:srlinux:chassis:interfaces:srl_nokia-interfaces, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-bridge-table:srl_nokia-interfaces-bridge-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-bridge-table-dhcp-snoop:srl_nokia-interfaces-bridge-table-dhcp-snoop, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-mac-duplication-entries:srl_nokia-interfaces-bridge-table-mac-duplication-entries, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac-learn:interfaces-bridge-table-mac-learning-entries:srl_nokia-interfaces-bridge-table-mac-learning-entries, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-mac-table:srl_nokia-interfaces-bridge-table-mac-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:interfaces-bridge-table-statistics:srl_nokia-interfaces-bridge-table-statistics, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:interfaces-bridge-table-stp:srl_nokia-interfaces-bridge-table-stp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-dco:srl_nokia-interfaces-dco, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:active-vlan-detection:interfaces-dynamic-subinterfaces:srl_nokia-interfaces-dynamic-subinterfaces, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:interfaces-ethernet-segment-association:srl_nokia-interfaces-ethernet-segment-association, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-ip-dhcp:srl_nokia-interfaces-ip-dhcp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dhcp-relay:interfaces-ip-dhcp-relay:srl_nokia-interfaces-ip-dhcp-relay, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dhcp:interfaces-ip-dhcp-server:srl_nokia-interfaces-ip-dhcp-server, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:vrrp:interfaces-ip-vrrp:srl_nokia-interfaces-ip-vrrp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-l2cp:srl_nokia-interfaces-l2cp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:lag:interfaces-lag:srl_nokia-interfaces-lag, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:mirror:interfaces-local-mirror-destination:srl_nokia-interfaces-local-mirror-destination, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:arp-nd:interfaces-nbr:srl_nokia-interfaces-nbr, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:interfaces-nbr-evpn:srl_nokia-interfaces-nbr-evpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:arp-nd:interfaces-nbr-virtual-ip-discovery:srl_nokia-interfaces-nbr-virtual-ip-discovery, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-p4rt:srl_nokia-interfaces-p4rt, Nokia, 2022-06-30
+  - urn:nokia.com:srlinux:arp-nd:interfaces-router-adv:srl_nokia-interfaces-router-adv, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-vlans:srl_nokia-interfaces-vlans, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:interfaces-vxdp:srl_nokia-interfaces-vxdp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fib:ip-route-tables:srl_nokia-ip-route-tables, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:ipfix:srl_nokia-ipfix, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:ippm-source-udp-pool:srl_nokia-ippm-source-udp-pool, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:isis:isis:srl_nokia-isis, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:isis:isis-lsdb:srl_nokia-isis-lsdb, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:isis:isis-lsdb-types:srl_nokia-isis-lsdb-types, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:json-rpc:json-rpc:srl_nokia-json-rpc, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:keychains:srl_nokia-keychains, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:lag:lacp:srl_nokia-lacp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ldp:ldp:srl_nokia-ldp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:license:license:srl_nokia-license, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:link-measurement:srl_nokia-link-measurement, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:linux:srl_nokia-linux, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:lldp:lldp:srl_nokia-lldp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:lldp:lldp-types:srl_nokia-lldp-types, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:load-balancing:srl_nokia-load-balancing, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:log:logging:srl_nokia-logging, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:macsec:macsec:srl_nokia-macsec, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:maintenance-mode:srl_nokia-maintenance-mode, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bfd:micro-bfd:srl_nokia-micro-bfd, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mirror:mirroring:srl_nokia-mirroring, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:mld:srl_nokia-mld, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:mld-snooping:srl_nokia-mld-snooping, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mpls:mpls:srl_nokia-mpls, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:label:mpls-label-management:srl_nokia-mpls-label-management, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fib:mpls-route-tables:srl_nokia-mpls-route-tables, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mpls:mpls-rsvp-tunnel:srl_nokia-mpls-rsvp-tunnel, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mpls:mpls-rsvp-tunnel-types:srl_nokia-mpls-rsvp-tunnel-types, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:mpls-services-evpn-label-management:srl_nokia-mpls-services-evpn-label-management, Nokia, 2025-07-31
+  - urn:nokia.com:srlinux:net-inst:mpls-services-network-instance-label-management:srl_nokia-mpls-services-network-instance-label-management, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:msdp:msdp:srl_nokia-msdp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:mtu:srl_nokia-mtu, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mfib:multicast-mfib-tables:srl_nokia-multicast-mfib-tables, Nokia, 2023-07-31
+  - urn:nokia.com:srlinux:pim:mvpn-l3:srl_nokia-mvpn-l3, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ndk:ndk:srl_nokia-ndk, Nokia, 2025-03-31
+  - urn:nokia.com:srlinux:netconf:netconf-server:srl_nokia-netconf-server, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:network-instance:srl_nokia-network-instance, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:network-instance-leaking:srl_nokia-network-instance-leaking, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:network-instance-mtu:srl_nokia-network-instance-mtu, Nokia, 2024-10-31
+  - urn:nokia.com:srlinux:fib:network-instance-route-limits:srl_nokia-network-instance-route-limits, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:static-route:next-hop-groups:srl_nokia-next-hop-groups, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:ntp:srl_nokia-ntp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:ntp-server:srl_nokia-ntp-server, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:oam:oam:srl_nokia-oam, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ethcfm:oam-pm-ethcfm:srl_nokia-oam-pm-ethcfm, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:oam-pm-ip:srl_nokia-oam-pm-ip, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:oc-mgmt:openconfig:srl_nokia-openconfig, Nokia, 2022-06-30
+  - urn:nokia.com:srlinux:ospf:ospf:srl_nokia-ospf, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ospf:ospf-lsdb:srl_nokia-ospf-lsdb, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ospf:ospfv3-lsas:srl_nokia-ospfv3-lsas, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:packet-link-qual:srl_nokia-packet-link-qual, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:packet-match-types:srl_nokia-packet-match-types, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:pcc:pcep:srl_nokia-pcep, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:pim:pim:srl_nokia-pim, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform:srl_nokia-platform, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-acl:srl_nokia-platform-acl, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:platform-cgroup:srl_nokia-platform-cgroup, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-chassis:srl_nokia-platform-chassis, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-control:srl_nokia-platform-control, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-control-fp:srl_nokia-platform-control-fp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:platform-cpu:srl_nokia-platform-cpu, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-datapath-resources:srl_nokia-platform-datapath-resources, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:platform-disk:srl_nokia-platform-disk, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-disk-resources:srl_nokia-platform-disk-resources, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-fabric:srl_nokia-platform-fabric, Nokia, 2023-03-31
+  - urn:nokia.com:srlinux:chassis:platform-fan:srl_nokia-platform-fan, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-first-hop-security-res-mgmt:srl_nokia-platform-first-hop-security-res-mgmt, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-healthz:srl_nokia-platform-healthz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-icm:srl_nokia-platform-icm, Nokia, 2025-10-31
+  - urn:nokia.com:srlinux:chassis:platform-lc:srl_nokia-platform-lc, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-linecard-fib:srl_nokia-platform-linecard-fib, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:platform-memory:srl_nokia-platform-memory, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-mtu:srl_nokia-platform-mtu, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-oam:srl_nokia-platform-oam, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-p4rt:srl_nokia-platform-p4rt, Nokia, 2022-06-30
+  - urn:nokia.com:srlinux:chassis:platform-pipeline-counters:srl_nokia-platform-pipeline-counters, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-poe:srl_nokia-platform-poe, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:chassis:platform-psu:srl_nokia-platform-psu, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-qos:srl_nokia-platform-qos, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-redundancy:srl_nokia-platform-redundancy, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-resource-mgmt:srl_nokia-platform-resource-mgmt, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-resource-monitoring:srl_nokia-platform-resource-monitoring, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-secure-boot:srl_nokia-platform-secure-boot, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-tcam:srl_nokia-platform-tcam, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-tpm:srl_nokia-platform-tpm, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:platform-vxdp:srl_nokia-platform-vxdp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:policy-forwarding:srl_nokia-policy-forwarding, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fib:programming-errors:srl_nokia-programming-errors, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:qos:srl_nokia-qos, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:qos-glb-pol:srl_nokia-qos-global-policers, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:qos-policers:srl_nokia-qos-policers, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fhs:ra_guard:srl_nokia-ra_guard, Nokia, 2025-07-31
+  - urn:nokia.com:srlinux:bgp:rib-bgp:srl_nokia-rib-bgp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:plcy:routing-policy:srl_nokia-routing-policy, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mpls:rsvp:srl_nokia-rsvp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bfd:seamless-bfd:srl_nokia-seamless-bfd, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:segrt:segment-routing:srl_nokia-segment-routing, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:sath:service-activation-testhead:srl_nokia-service-activation-testhead, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:sflow:srl_nokia-sflow, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:srv6:srv6:srl_nokia-srv6, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:srv6:srv6-instance:srl_nokia-srv6-instance, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:srv6:srv6-isis:srl_nokia-srv6-isis, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:ssh:srl_nokia-ssh, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:stamp:srl_nokia-stamp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:static-route:static-routes:srl_nokia-static-routes, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:stp-common:srl_nokia-stp-common, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:stp-types:srl_nokia-stp-types, Nokia, 2025-10-31
+  - urn:nokia.com:srlinux:general:system:srl_nokia-system, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:alarm:srl_nokia-system-alarms, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:system-banner:srl_nokia-system-banner, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:system-bridge-table:srl_nokia-system-bridge-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:system-bridge-table-evpn:srl_nokia-system-bridge-table-evpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn-mpls-multicast-tep:system-bridge-table-evpn-mpls-multicast-tep:srl_nokia-system-bridge-table-evpn-mpls-multicast-tep, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-proxy-arp-nd:system-bridge-table-proxy-arp:srl_nokia-system-bridge-table-proxy-arp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:system-cli:srl_nokia-system-cli, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:system-coordinates:srl_nokia-system-coordinates, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:datapath:srl_nokia-system-datapath, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:system-info:srl_nokia-system-info, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:system-multicast:srl_nokia-system-multicast, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mfib:system-multicast-mfib-table:srl_nokia-system-multicast-mfib-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:system-name:srl_nokia-system-name, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:system-network-instance:srl_nokia-system-network-instance, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:evpn:system-network-instance-bgp-evpn-ethernet-segments:srl_nokia-system-network-instance-bgp-evpn-ethernet-segments, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:system-network-instance-bgp-evpn-multicast:srl_nokia-system-network-instance-bgp-evpn-multicast, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:bgp:system-network-instance-bgp-vpn:srl_nokia-system-network-instance-bgp-vpn, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:system-network-instance-vxlan:srl_nokia-system-network-instance-vxlan, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:system-protocols:srl_nokia-system-protocols, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:system-protocols-mgmt-stp:srl_nokia-system-protocols-mgmt-stp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:snmp:srl_nokia-system-snmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:system-utilization:srl_nokia-system-utilization, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:plcy:table-connections:srl_nokia-table-connections, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:tcp-udp:srl_nokia-tcp-udp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:terminal-device:srl_nokia-terminal-device, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:tftp:srl_nokia-tftp, Nokia, 2025-10-31
+  - urn:nokia.com:srlinux:linux:timezone:srl_nokia-timezone, Nokia, 2020-06-30
+  - urn:nokia.com:srlinux:linux:tls:srl_nokia-tls, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:te:traffic-engineering:srl_nokia-traffic-engineering, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:macsec:transport-security:srl_nokia-transport-security, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:tunnel:srl_nokia-tunnel, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:tunnel-interfaces:srl_nokia-tunnel-interfaces, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:tunnel-interfaces-vxlan-interface-bridge-table:srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mcid:tunnel-interfaces-vxlan-interface-bridge-table-multicast-destinations:srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-multicast-destinations, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:tunnel-interfaces-vxlan-interface-bridge-table-unicast-destinations:srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-unicast-destinations, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:tunnel-interfaces-vxlan-interface-bridge-table-unicast-es-destination-vteps:srl_nokia-tunnel-interfaces-vxlan-interface-bridge-table-unicast-es-destination-vteps, Nokia, 2021-03-31
+  - urn:nokia.com:srlinux:fib:tunnel-tables:srl_nokia-tunnel-tables, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:twamp:srl_nokia-twamp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:vxlan-tunnel-vtep:srl_nokia-vxlan-tunnel-vtep, Nokia, 2026-07-31
+  - urn:ietf:params:xml:ns:yang:1:yang, libyang, 2017-02-20
+  - urn:nokia.com:srlinux:aaa:tools-aaa:srl_nokia-tools-aaa, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:acl:tools-acl:srl_nokia-tools-acl, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:app:tools-app-mgmt:srl_nokia-tools-app-mgmt, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bfd:tools-bfd:srl_nokia-tools-bfd, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:bgp:tools-bgp:srl_nokia-tools-bgp, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:chassis:tools-boot:srl_nokia-tools-boot, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:tools-bridge-table-mac-duplication:srl_nokia-tools-bridge-table-mac-duplication, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac-learn:tools-bridge-table-mac-learning:srl_nokia-tools-bridge-table-mac-learning, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-proxy-arp-nd:tools-bridge-table-proxy-arp-nd:srl_nokia-tools-bridge-table-proxy-arp-nd, Nokia, 2022-11-30
+  - urn:nokia.com:srlinux:chassis:tools-cgroup:srl_nokia-tools-cgroup, Nokia, 2021-03-31
+  - urn:nokia.com:srlinux:general:tools-configuration:srl_nokia-tools-configuration, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:l2-mac:tools-connection-point-bridge-table-mac-duplication:srl_nokia-tools-connection-point-bridge-table-mac-duplication, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:l2-mac-learn:tools-connection-point-bridge-table-mac-learning:srl_nokia-tools-connection-point-bridge-table-mac-learning, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:dhcp-relay:tools-dhcp-relay:srl_nokia-tools-dhcp-relay, Nokia, 2023-03-31
+  - urn:nokia.com:srlinux:dhcp:tools-dhcp-server:srl_nokia-tools-dhcp-server, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:dot1x:tools-dot1x:srl_nokia-tools-dot1x, Nokia, 2025-03-31
+  - urn:nokia.com:srlinux:dot1x:tools-tunneling:srl_nokia-tools-dot1x-tunneling, Nokia, 2025-03-31
+  - urn:nokia.com:srlinux:ethcfm:tools-ethcfm:srl_nokia-tools-ethcfm, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:event:tools-event-handler:srl_nokia-tools-event-handler, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:aaa:tools-gnsi-authz:srl_nokia-tools-gnsi-authz, Nokia, 2023-10-31
+  - urn:nokia.com:srlinux:linux:tools-gnsi-certz:srl_nokia-tools-gnsi-certz, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:aaa:tools-gnsi-pathz:srl_nokia-tools-gnsi-pathz, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:group-based-policy:tools-gbp:srl_nokia-tools-group-based-policy, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:grpc:tools-grpc:srl_nokia-tools-grpc, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:tools-icmp:srl_nokia-tools-icmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:tools-igmp:srl_nokia-tools-igmp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:tools-igmp-snooping:srl_nokia-tools-igmp-snooping, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-interfaces:srl_nokia-tools-interfaces, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac:tools-interfaces-bridge-table-mac-duplication:srl_nokia-tools-interfaces-bridge-table-mac-duplication, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:l2-mac-learn:tools-interfaces-bridge-table-mac-learning:srl_nokia-tools-interfaces-bridge-table-mac-learning, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:active-vlan-detection:tools-interfaces-dynamic-subinterfaces:srl_nokia-tools-interfaces-dynamic-subinterfaces, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:fhs:tools-interfaces-fhs-binding:srl_nokia-tools-interfaces-fhs-binding, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:dhcp-relay:tools-interfaces-ip-dhcp-relay:srl_nokia-tools-interfaces-ip-dhcp-relay, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vrrp:tools-interfaces-ip-vrrp:srl_nokia-tools-interfaces-ip-vrrp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:arp-nd:tools-interfaces-nbr:srl_nokia-tools-interfaces-nbr, Nokia, 2022-11-30
+  - urn:nokia.com:srlinux:arp-nd:tools-interfaces-nbr-virtual-ip-discovery:srl_nokia-tools-interfaces-nbr-virtual-ip-discovery, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-interfaces-packet-link-qual:srl_nokia-tools-interfaces-packet-link-qual, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:isis:tools-isis:srl_nokia-tools-isis, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-l2cp:srl_nokia-tools-l2cp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:ldp:tools-ldp:srl_nokia-tools-ldp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:lldp:tools-lldp:srl_nokia-tools-lldp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:tools-mgmt-stp:srl_nokia-tools-mgmt-stp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mirror:tools-mirroring:srl_nokia-tools-mirroring, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:tools-mld:srl_nokia-tools-mld, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:igmp:tools-mld-snooping:srl_nokia-tools-mld-snooping, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:msdp:tools-msdp:srl_nokia-tools-msdp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:netconf:tools-netconf-server:srl_nokia-tools-netconf-server, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:tools-network-instance:srl_nokia-tools-network-instance, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:oam:tools-oam:srl_nokia-tools-oam, Nokia, 2024-03-31
+  - urn:nokia.com:srlinux:ethcfm:tools-oam-pm-ethcfm:srl_nokia-tools-oam-pm-ethcfm, Nokia, 2025-03-31
+  - urn:nokia.com:srlinux:twamp:tools-oam-pm-ip:srl_nokia-tools-oam-pm-ip, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:ospf:tools-ospf:srl_nokia-tools-ospf, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:oam:tools-packet-trace:srl_nokia-tools-packet-trace, Nokia, 2023-03-31
+  - urn:nokia.com:srlinux:pim:tools-pim:srl_nokia-tools-pim, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-platform:srl_nokia-tools-platform, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-platform-attestation:srl_nokia-tools-platform-attestation, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-platform-redundancy:srl_nokia-tools-platform-redundancy, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:chassis:tools-platform-secure-boot:srl_nokia-tools-platform-secure-boot, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:tools-qos:srl_nokia-tools-qos, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:tools-qos-global-policers:srl_nokia-tools-qos-global-policers, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:qos:tools-qos-policers:srl_nokia-tools-qos-policers, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:tools-restore-sd:srl_nokia-tools-restore-sd, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:general:tools-route-table:srl_nokia-tools-route-table, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:net-inst:tools-segrt:srl_nokia-tools-segment-routing, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:mplsoam:tools-service-activation-testhead:srl_nokia-tools-service-activation-testhead, Nokia, 2025-07-31
+  - urn:nokia.com:srlinux:linux:tools-snmp:srl_nokia-tools-snmp, Nokia, 2025-07-31
+  - urn:nokia.com:srlinux:system:tools-storage-encryption:srl_nokia-tools-storage-encryption, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:stp:tools-stp:srl_nokia-tools-stp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:tools-system:srl_nokia-tools-system, Nokia, 2019-11-30
+  - urn:nokia.com:srlinux:general:tools-system-network-instance-protocols:srl_nokia-tools-system-network-instance-protocols, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:general:tools-interfaces-transceiver:srl_nokia-tools-system-transceiver, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:linux:tools-tls:srl_nokia-tools-tls, Nokia, 2026-03-31
+  - urn:nokia.com:srlinux:vxlan:tools-tunnel:srl_nokia-tools-tunnel, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:twamp:tools-twamp:srl_nokia-tools-twamp, Nokia, 2026-07-31
+  - urn:nokia.com:srlinux:vxlan:tools-vxlan-tunnel:srl_nokia-tools-vxlan-tunnel, Nokia, 2026-07-31
+  - http://openconfig.net/yang/aaa:openconfig-aaa, OpenConfig working group, 2022-07-29
+  - http://openconfig.net/yang/acl:openconfig-acl, OpenConfig working group, 2023-02-06
+  - http://openconfig.net/yang/aft/ni:openconfig-aft-network-instance, OpenConfig working group, 2023-04-25
+  - http://openconfig.net/yang/aft-summary:openconfig-aft-summary, OpenConfig working group, 2024-01-12
+  - http://openconfig.net/yang/alarms:openconfig-alarms, OpenConfig working group, 2026-02-24
+  - http://openconfig.net/yang/bgp-policy:openconfig-bgp-policy, OpenConfig working group, 2024-11-13
+  - http://openconfig.net/yang/defined-sets:openconfig-defined-sets, OpenConfig working group, 2022-12-14
+  - http://openconfig.net/yang/flexalgo:openconfig-flexalgo, OpenConfig working group, 2023-05-24
+  - https://github.com/openconfig/yang/gnsi/acctz:openconfig-gnsi-acctz, OpenConfig Working Group, 2024-12-24
+  - https://github.com/openconfig/yang/gnsi/authz:openconfig-gnsi-authz, OpenConfig Working Group, 2024-02-13
+  - https://github.com/openconfig/yang/gnsi/certz:openconfig-gnsi-certz, OpenConfig Working Group, 2024-03-05
+  - https://github.com/openconfig/yang/gnsi/credentialz:openconfig-gnsi-credentialz, OpenConfig Working Group, 2024-09-10
+  - https://github.com/openconfig/yang/gnsi/pathz:openconfig-gnsi-pathz, OpenConfig Working Group, 2024-02-13
+  - http://openconfig.net/yang/gribi:openconfig-gribi, OpenConfig Working Group, 2021-04-06
+  - http://openconfig.net/yang/interfaces/aggregate:openconfig-if-aggregate, OpenConfig working group, 2025-04-22
+  - http://openconfig.net/yang/interfaces/ethernet:openconfig-if-ethernet, OpenConfig working group, 2025-11-20
+  - http://openconfig.net/yang/interfaces/ethernet-ext:openconfig-if-ethernet-ext, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/interfaces/ip:openconfig-if-ip, OpenConfig working group, 2024-03-13
+  - http://openconfig.net/interfaces/sdn-ext:openconfig-if-sdn-ext, OpenConfig working group, 2024-02-21
+  - http://openconfig.net/yang/interfaces:openconfig-interfaces, OpenConfig working group, 2024-12-05
+  - http://openconfig.net/yang/isis-lsdb-types:openconfig-isis-lsdb-types, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/openconfig-isis-policy:openconfig-isis-policy, OpenConfig working group, 2023-11-02
+  - http://openconfig.net/yang/lacp:openconfig-lacp, OpenConfig working group, 2024-09-24
+  - http://openconfig.net/yang/lldp:openconfig-lldp, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/local-routing-netinst:openconfig-local-routing-network-instance, OpenConfig working group, 2025-07-01
+  - http://openconfig.net/yang/openconfig-metadata:openconfig-metadata, OpenConfig working group, 2020-08-06
+  - http://openconfig.net/yang/network-instance:openconfig-network-instance, OpenConfig working group, 2025-03-26
+  - http://openconfig.net/yang/p4rt:openconfig-p4rt, OpenConfig Working Group, 2023-12-13
+  - http://openconfig.net/yang/platform:openconfig-platform, OpenConfig working group, 2025-01-30
+  - http://openconfig.net/yang/platform/controller-card:openconfig-platform-controller-card, OpenConfig working group, 2024-04-10
+  - http://openconfig.net/yang/platform/cpu:openconfig-platform-cpu, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/platform/fabric:openconfig-platform-fabric, OpenConfig working group, 2022-07-28
+  - http://openconfig.net/yang/platform/fan:openconfig-platform-fan, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/platform/healthz:openconfig-platform-healthz, OpenConfig working group, 2023-04-11
+  - http://openconfig.net/yang/platform/integrated-circuit:openconfig-platform-integrated-circuit, OpenConfig working group, 2022-04-20
+  - http://openconfig.net/yang/platform/linecard:openconfig-platform-linecard, OpenConfig working group, 2024-04-12
+  - http://openconfig.net/yang/platform-pipeline-counters:openconfig-platform-pipeline-counters, OpenConfig working group, 2023-10-08
+  - http://openconfig.net/yang/platform/port:openconfig-platform-port, OpenConfig working group, 2023-03-22
+  - http://openconfig.net/yang/platform/psu:openconfig-platform-psu, OpenConfig working group, 2018-11-21
+  - http://openconfig.net/yang/platform/software-module:openconfig-platform-software, OpenConfig working group, 2021-06-16
+  - http://openconfig.net/yang/platform/storage:openconfig-platform-storage, OpenConfig working group, 2024-08-26
+  - http://openconfig.net/yang/platform/transceiver:openconfig-platform-transceiver, OpenConfig working group, 2024-10-09
+  - http://openconfig.net/yang/platform/usb-port:openconfig-platform-usb-port, OpenConfig working group, 2025-09-03
+  - http://openconfig.net/yang/programming-errors:openconfig-programming-errors, OpenConfig working group, 2022-10-11
+  - http://openconfig.net/yang/qos:openconfig-qos, OpenConfig working group, 2023-10-13
+  - http://openconfig.net/yang/rib/bgp-types:openconfig-rib-bgp-types, OpenConfig working group, 2019-03-14
+  - http://openconfig.net/yang/routing-policy:openconfig-routing-policy, OpenConfig working group, 2024-11-26
+  - http://openconfig.net/yang/sampling:openconfig-sampling, OpenConfig working group, 2022-06-21
+  - http://openconfig.net/yang/sampling/sflow:openconfig-sampling-sflow, OpenConfig working group, 2025-05-13
+  - http://openconfig.net/yang/sr:openconfig-segment-routing, OpenConfig working group, 2023-08-09
+  - urn:nokia.com:srlinux:openconfig:openconfig-srl-augments:openconfig-srl-augments, Nokia, 2024-07-31
+  - urn:nokia.com:srlinux:openconfig:openconfig-srl-deviations:openconfig-srl-deviations, Nokia, 2026-07-31
+  - http://openconfig.net/yang/system:openconfig-system, OpenConfig working group, 2024-09-24
+  - http://openconfig.net/yang/system-bootz:openconfig-system-bootz, OpenConfig working group, 2023-06-16
+  - http://openconfig.net/yang/system-controlplane:openconfig-system-controlplane, OpenConfig working group, 2023-03-03
+  - http://openconfig.net/yang/system-grpc:openconfig-system-grpc, OpenConfig working group, 2024-05-29
+  - http://openconfig.net/yang/system-utilization:openconfig-system-utilization, OpenConfig working group, 2023-02-13
+  - http://openconfig.net/yang/terminal-device:openconfig-terminal-device, OpenConfig working group, 2025-12-11
+  - http://openconfig.net/yang/vlan:openconfig-vlan, OpenConfig working group, 2023-02-07
+supported encodings:
+  - JSON_IETF
+  - PROTO
+  - ASCII
+  - 52
+  - 42
+  - 43
+  - 45
+  - 44
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 53
+
+---end of output
+
