@@ -7,7 +7,7 @@
 Laboratorio de programación de redes basada en modelos YANG
 ===========================================================
 
-> Última actualización de la práctica: 08 de octubre de 2026
+> Última actualización de la práctica: 13 de octubre de 2026
 
 
 <!-- omit from toc -->
@@ -220,7 +220,7 @@ En el siguiente diagrama, se incluye un ejemplo de cómo construir un filtro de 
 
 Prueba a cambiar el filtro de tipo *subtree* en el *script* [`get-rpc-yang-library-srlinux.py`](../activities/module-1/get-rpc-yang-library-srlinux.py) según lo especificado en la figura anterior y vea cómo ahora se proporciona información relativa sólo al módulo `ietf-netconf`.
 
-Una vez evaluadas las capacidades del equipo de red Nokia SR Linux con NETCONF, evaluaremos con el mismo protocolo de gestión de red cómo realizar consultas RPC concretas para datos operativos o de configuración. Para ello, pondremos como caso de uso evaluar datos operativos y de configuración de una interfaz concreta de red del equipo utilizando un modelo YANG propietario del equipo Nokia SR Linux para dicho propósito. El modelo YANG a utilizar será uno propietario de Nokia SR Linux: `srl_nokia-interfaces@2026-07-31.yang`. Busque el modelo YANG dentro del catálogo de modelos que descargó  en la carpeta ``yang-models-srlinux` para analizar su contenido. Utilice la herramienta *pyang* para poder analizar la estructura en forma de árbol del modelo YANG, ejecutando el siguiente comando:
+Una vez evaluadas las capacidades del equipo de red Nokia SR Linux con NETCONF, evaluaremos con el mismo protocolo de gestión de red cómo realizar consultas RPC concretas para datos operativos o de configuración. Para ello, pondremos como caso de uso evaluar datos operativos y de configuración de una interfaz concreta de red del equipo utilizando un modelo YANG propietario del equipo Nokia SR Linux para dicho propósito. El modelo YANG a utilizar será uno propietario de Nokia SR Linux: `srl_nokia-interfaces@2026-07-31.yang`. Busque el modelo YANG dentro del catálogo de modelos que descargó  en la carpeta `yang-models-srlinux` para analizar su contenido. Utilice la herramienta *pyang* para poder analizar la estructura en forma de árbol del modelo YANG, ejecutando el siguiente comando:
 ```bash 
 pyang -f tree srl_nokia-interfaces@2026-07-31.yang
 ```
@@ -463,7 +463,7 @@ outputs:
     format: event
 ```
 
-Deberá cambiar los valores `<container_name>` y `<...>` convenientemente. En el apartado *paths* de la subscripción periódica `r1_traffic_stats` indicada, incluya el *path* que apunte las estadísticas de la interfaz de red `ethernet-1/1` del router `r1` del escenario (es decir, nodo de datos general de estadísticas perteneciente modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto y utilizado en actividades anteriores). En el apartado *paths* de la subscripción basada en cambios `r1_port_status`  indicada, incluye dos *paths*, uno que apunte al estado operativo de la interfaz de red `ethernet-1/1` y el otro que apunte al estado administrativo de la interfaz `ethernet-1/1` (determine para ello los nodos de datos relativos pertenecientes al modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto anteriormente).
+Deberá cambiar los valores `<container_name>` y `<...>` convenientemente. En el apartado *paths* de la subscripción periódica `r1_traffic_stats_e1-1` indicada, incluya el *path* que apunte las estadísticas de la interfaz de red `ethernet-1/1` del router `r1` del escenario (es decir, nodo de datos general de estadísticas perteneciente modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto y utilizado en actividades anteriores). En el apartado *paths* de la subscripción basada en cambios `r1_interface_status_e1-1` indicada, incluye dos *paths*, uno que apunte al estado operativo de la interfaz de red `ethernet-1/1` y el otro que apunte al estado administrativo de la interfaz `ethernet-1/1` (determine para ello los nodos de datos relativos pertenecientes al modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto anteriormente).
 
 >**Nota:** Al incluir el índice de los *paths* donde se apunta al nombre de la interfaz, no incluya el nombre entre `""` o `''`.
 
@@ -515,7 +515,15 @@ outputs:
 ```
 Deberá configurar las subscripciones definidas para que apunten a la salida apropiada. Tenga en cuenta también que en el apartado `outputs` para cada tipo de subscripción definida en la sección `subscriptions`, puede asociar tantas salidas como desee. En el caso de Kafka, se configuran dos salidas, una para publicar las estadísticas de telemetría de tráfico en un *topic* denominado `traffic-stats` y otra para publicar notificaciones del estado operativo y administrativo de las interfaces  de red en un *topic* denominado `interface-status`.
 
-Una vez configurada la plantilla, veamos cómo arrancar el sistema de telemetría completo para probar su funcionalidad. En el directorio `module-3` encontrará un fichero [`docker-compose.yaml`](../activities/module-3/docker-compose.yaml) que define y configura los diferentes servicios dependientes para poder desplegar el sistema de telemetría como microservicios basados en contenedores Docker, incluido el cliente de `gNMIC`. Para poder comunicarse directamente con el escenario de red de Containerlab, los servicios contenerizados del sistema de telemetría utilizan la misma red de gestión de Docker que los equipos de la red. Para poder desplegar los servicios del sistema de telemetría ejecute el siguiente comando:
+Una vez configurada la plantilla, veamos cómo arrancar el sistema de telemetría completo para probar su funcionalidad. En el directorio `module-3` encontrará un fichero [`docker-compose.yaml`](../activities/module-3/docker-compose.yaml) que define y configura los diferentes servicios dependientes para poder desplegar el sistema de telemetría como microservicios basados en contenedores Docker, incluido el cliente de `gNMIC`. Para poder comunicarse directamente con el escenario de red de Containerlab, los servicios contenerizados del sistema de telemetría utilizan la misma red de gestión de Docker que los equipos de la red. 
+
+Antes de desplegar el sistema de telemetría, es necesario mover el contenido del directorio `module-3` a una ubicación fuera del directorio compartido `/home/upm/shared` (p.ej., a `/home/upm`). Además, hay que modificar los permisos de la carpeta `prometheus` y del fichero `prometheus.yaml` que contiene, para garantizar que el microservicio de Prometheus pueda acceder a ellos y arrancar correctamente. Para ello, desde la nueva ubicación del directorio `module-3`, ejecute los siguientes comandos:
+```bash
+chmod +rx prometheus
+chmod +rx prometheus/prometheus.yaml
+```
+
+Una vez realizados los pasos anteriores, para poder desplegar los servicios del sistema de telemetría ejecute el siguiente comando desde la nueva localización del directorio `module-3`:
 ```bash
 docker compose -f docker-compose.yaml up -d
 ```

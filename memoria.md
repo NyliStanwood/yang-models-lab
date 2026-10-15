@@ -337,23 +337,125 @@ En la segunda actividad desplegamos con `deploy-routing-testbed.sh` un escenario
 
 **Pregunta 8.** Descripción del escenario; función de la aplicación Java; utilidad para un controlador SDN.
 
-> _[PENDIENTE: descripción del escenario y diagrama / captura]_
->
-> | Enlace / LAN | Interfaces | Prefijo IP |
-> |---|---|---|
-> | _[PENDIENTE]_ | | |
->
-> _[PENDIENTE: análisis de `topology.json` / `topology.xml` y respuesta]_
+**Descripción del escenario.** La plantilla `routing-testbed.yaml` define tres routers SR Linux conectados en triángulo por sus interfaces `ethernet-1/2` y `ethernet-1/3`. Cada router conecta por `ethernet-1/1` con un switch OVS (`s1`, `s2`, `s3`), al que se conectan dos hosts `network-multitool`. Los switches son *bridges* que el script de despliegue crea en la máquina anfitriona con `ovs-vsctl add-br`, no contenedores. Todos los contenedores están además en la red de gestión `clab`, por la que se accede a los routers con gNMI (puerto 57400).
+
+| Enlace / LAN | Interfaces | Prefijo IP |
+|---|---|---|
+| LAN 1 | `r1:ethernet-1/1` — `s1` — `pc11`, `pc12` | 192.168.1.0/24 (r1 `.1`, hosts `.100` y `.101`) |
+| LAN 2 | `r2:ethernet-1/1` — `s2` — `pc21`, `pc22` | 192.168.2.0/24 (r2 `.1`, hosts `.100` y `.101`) |
+| LAN 3 | `r3:ethernet-1/1` — `s3` — `pc31`, `pc32` | 192.168.3.0/24 (r3 `.1`, hosts `.100` y `.101`) |
+| r1 ↔ r2 | `r1:ethernet-1/2` — `r2:ethernet-1/2` | 10.0.10.0/30 (sin configurar) |
+| r1 ↔ r3 | `r1:ethernet-1/3` — `r3:ethernet-1/2` | 10.0.11.0/30 (sin configurar) |
+| r2 ↔ r3 | `r2:ethernet-1/3` — `r3:ethernet-1/3` | 10.0.12.0/30 (sin configurar) |
+
+Configuración inicial:
+
+- **Routers:** los `r*.cfg` solo configuran la interfaz de la LAN y la asocian a la *network-instance* `default`.
+- **Hosts:** el script de despliegue les asigna la dirección y añade rutas hacia las otras dos LANs a través del router de su LAN.
+
+Los enlaces entre routers no tienen direccionamiento ni hay rutas estáticas, por lo que no hay conectividad entre LANs. Los prefijos de 10.0.x.x son los del plan de direccionamiento del enunciado. Las LANs son en realidad /24 y no /30 como indica el enunciado, porque una /30 no podría contener las direcciones `.100` y `.101` de los hosts.
+
+**Función de la aplicación Java.** `topology-driver-1.0.jar` lee el fichero `topology-data.json` que genera Containerlab al desplegar. Ese fichero está en un formato propio de la herramienta, con nodos, imágenes, MACs, direcciones de gestión, etc. La aplicación lo transforma en una instancia de datos conforme a los modelos `ietf-network` e `ietf-network-topology` de la RFC 8345, y la serializa en JSON (`topology.json`) y en XML (`topology.xml`) con las librerías YANG Tools de OpenDaylight. El resultado es una única red, `routing-testbed`, que contiene:
+
+- 12 nodos (`node-id`), cada uno con sus puertos como *termination points* (`tp-id`).
+- 12 enlaces (`link-id`), cada uno con origen y destino `source-node`/`source-tp` → `dest-node`/`dest-tp`.
+
+En el proceso solo se conserva la información topológica: se descartan la imagen, el tipo de nodo, las MACs y la red de gestión. Además, los nombres de interfaz se normalizan a los del equipo, por ejemplo `e1-1` pasa a ser `ethernet-1/1`. Como los datos se validan contra el esquema YANG, el mismo contenido se puede serializar en JSON o en XML.
+
+**Utilidad para un controlador SDN.** Un controlador necesita una vista global de la red independiente del entorno o fabricante del que procede. Con un modelo estándar como el de la RFC 8345, la topología se convierte en un dato YANG más, igual que la configuración de los equipos:
+
+- **Almacenamiento y consulta homogéneos:** la topología se puede guardar en el *datastore* del controlador, consultar y exponer hacia aplicaciones superiores (NETCONF/RESTCONF) en la misma forma, venga de Containerlab, de LLDP o de otro inventario.
+- **Configuración guiada por la topología:** los `node-id`/`tp-id` coinciden con los nombres de interfaz de los modelos de SR Linux, así que el controlador puede recorrer los enlaces y generar directamente los *paths* gNMI necesarios. En este escenario, por ejemplo, puede obtener qué interfaces de cada router asignar a cada /30 y qué siguiente salto usar en cada ruta estática.
+- **Ampliación con otras capas:** la topología se puede ampliar con modelos que extienden `ietf-network`, como `ietf-l3-unicast-topology`, incluido en el propio jar, para añadir prefijos y atributos L3. También se puede contrastar con el estado real que se obtiene por telemetría.
 
 A partir de los modelos `srl_nokia-interfaces`, `srl_nokia-if-ip`, `srl_nokia-network-instance`, `srl_nokia-static-routes` y `srl_nokia-next-hop-groups`, identificamos las variables de las plantillas `configure_ip_address.yaml` y `configure_ip_routing.yaml`, y escribimos un script que automatiza todas las peticiones `set` de `gNMIc` para configurar el direccionamiento y las rutas estáticas de los tres routers. Verificamos la configuración con consultas `get` (incluido `gnmic-get-routing-config.sh`) y con pruebas de conectividad entre hosts.
 
 **Pregunta 9.** Script de automatización de la configuración y pruebas de conectividad.
 
-> _[PENDIENTE: nombre del script y explicación breve de su lógica]_
->
-> _[PENDIENTE: plan de direccionamiento y rutas estáticas por router]_
->
-> _[PENDIENTE: captura de pruebas de conectividad (ping) entre hosts]_
+**Plan de direccionamiento.** Seguimos el plan del enunciado para los enlaces entre routers. Las interfaces de cada enlace salen de `routing-testbed.yaml`:
+
+| Enlace | Subred | Router A | Router B |
+|---|---|---|---|
+| r1 ↔ r2 | 10.0.10.0/30 | r1 `ethernet-1/2` 10.0.10.1 | r2 `ethernet-1/2` 10.0.10.2 |
+| r1 ↔ r3 | 10.0.11.0/30 | r1 `ethernet-1/3` 10.0.11.1 | r3 `ethernet-1/2` 10.0.11.2 |
+| r2 ↔ r3 | 10.0.12.0/30 | r2 `ethernet-1/3` 10.0.12.1 | r3 `ethernet-1/3` 10.0.12.2 |
+
+**Rutas estáticas.** Cada router necesita una ruta hacia cada una de las dos LANs remotas. El siguiente salto es el extremo del enlace directo con el router de esa LAN:
+
+| Router | Destino | Siguiente salto | *Next-hop group* |
+|---|---|---|---|
+| r1 | 192.168.2.0/24 | 10.0.10.2 (r2) | `nh-r1-r2` |
+| r1 | 192.168.3.0/24 | 10.0.11.2 (r3) | `nh-r1-r3` |
+| r2 | 192.168.1.0/24 | 10.0.10.1 (r1) | `nh-r2-r1` |
+| r2 | 192.168.3.0/24 | 10.0.12.2 (r3) | `nh-r2-r3` |
+| r3 | 192.168.1.0/24 | 10.0.11.1 (r1) | `nh-r3-r1` |
+| r3 | 192.168.2.0/24 | 10.0.12.1 (r2) | `nh-r3-r2` |
+
+Al dar valores a las variables de las plantillas tuvimos en cuenta lo siguiente:
+
+- **`IF_IP_PREFIX` y `Target_IP_Prefix`** son prefijos, por lo que llevan máscara. Las LANs usan /24, que es lo configurado en los routers y hosts, y no /30 como indica el enunciado.
+- **`IP_NextHop`** es una dirección sin máscara (`10.0.10.2`, no `10.0.10.2/30`), porque el nodo `ip-address` del modelo `srl_nokia-next-hop-groups` es de tipo dirección IP.
+- **`Name_NextHop`** debe ser distinto para cada ruta de un mismo router, porque es la clave del *next-hop group*. Si se repite, el segundo `set` sobrescribe el grupo y las dos rutas acaban apuntando al mismo siguiente salto.
+- **Router destino de cada petición:** la petición se envía con `-a` al router que debe tener la ruta (`nh-rX-rY` → `clab-routing-testbed-rX`), no al router de la LAN destino.
+
+**Script.** El script ejecuta en secuencia las peticiones `set` de `gNMIc` con cada plantilla y le pasa los pares variable-valor en JSON por la entrada estándar (`--request-vars -`). Hay una petición por interfaz, con `configure_ip_address.yaml`, y una por ruta, con `configure_ip_routing.yaml`. Debe ejecutarse desde `module-2`, porque las plantillas se referencian con ruta relativa:
+
+```bash
+# Direccionamiento IP de los enlaces entre routers
+echo '{"IF_NAME": "ethernet-1/2", "IF_IP_PREFIX": "10.0.10.1/30"}' | gnmic -a clab-routing-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+echo '{"IF_NAME": "ethernet-1/3", "IF_IP_PREFIX": "10.0.11.1/30"}' | gnmic -a clab-routing-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+echo '{"IF_NAME": "ethernet-1/2", "IF_IP_PREFIX": "10.0.10.2/30"}' | gnmic -a clab-routing-testbed-r2:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+echo '{"IF_NAME": "ethernet-1/3", "IF_IP_PREFIX": "10.0.12.1/30"}' | gnmic -a clab-routing-testbed-r2:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+echo '{"IF_NAME": "ethernet-1/2", "IF_IP_PREFIX": "10.0.11.2/30"}' | gnmic -a clab-routing-testbed-r3:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+echo '{"IF_NAME": "ethernet-1/3", "IF_IP_PREFIX": "10.0.12.2/30"}' | gnmic -a clab-routing-testbed-r3:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_address.yaml --request-vars -
+
+# Rutas estáticas hacia las LANs remotas
+echo '{"Name_NextHop": "nh-r1-r2", "IP_NextHop": "10.0.10.2", "Target_IP_Prefix": "192.168.2.0/24"}' | gnmic -a clab-routing-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+echo '{"Name_NextHop": "nh-r1-r3", "IP_NextHop": "10.0.11.2", "Target_IP_Prefix": "192.168.3.0/24"}' | gnmic -a clab-routing-testbed-r1:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+echo '{"Name_NextHop": "nh-r2-r1", "IP_NextHop": "10.0.10.1", "Target_IP_Prefix": "192.168.1.0/24"}' | gnmic -a clab-routing-testbed-r2:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+echo '{"Name_NextHop": "nh-r2-r3", "IP_NextHop": "10.0.12.2", "Target_IP_Prefix": "192.168.3.0/24"}' | gnmic -a clab-routing-testbed-r2:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+echo '{"Name_NextHop": "nh-r3-r2", "IP_NextHop": "10.0.12.1", "Target_IP_Prefix": "192.168.2.0/24"}' | gnmic -a clab-routing-testbed-r3:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+echo '{"Name_NextHop": "nh-r3-r1", "IP_NextHop": "10.0.11.1", "Target_IP_Prefix": "192.168.1.0/24"}' | gnmic -a clab-routing-testbed-r3:57400 -u admin -p NokiaSrl1! --skip-verify set --request-file configure_ip_routing.yaml --request-vars -
+```
+
+**Resultado de las peticiones `set`.** Cada petición devuelve una `SetResponse` con dos operaciones `UPDATE`, que se corresponden con los dos `updates` de la plantilla:
+
+- `configure_ip_address.yaml`: `interface[name=ethernet-1/N]` y `network-instance[name=default]/interface[name=ethernet-1/N.0]`.
+- `configure_ip_routing.yaml`: `network-instance[name=default]/next-hop-groups/group[name=nh-rX-rY]` y `network-instance[name=default]/static-routes/route[prefix=192.168.Z.0/24]`.
+
+Extracto de la respuesta a la primera ruta de r1:
+
+```json
+{
+  "source": "clab-routing-testbed-r1:57400",
+  "time": "2026-10-15T23:23:10.692752764+02:00",
+  "results": [
+    { "operation": "UPDATE", "path": "network-instance[name=default]/next-hop-groups/group[name=nh-r1-r2]" },
+    { "operation": "UPDATE", "path": "network-instance[name=default]/static-routes/route[prefix=192.168.2.0/24]" }
+  ]
+}
+```
+
+**Verificación con `get`.** Lanzamos `gnmic-get-routing-config.sh` sobre cada router. Los tres tienen en la *network-instance* `default` las interfaces `ethernet-1/1.0`, `ethernet-1/2.0` y `ethernet-1/3.0`, dos *next-hop groups* y dos rutas estáticas con `admin-state` `enable`, tal como aparece en la tabla de rutas anterior. Por ejemplo, en r1:
+
+```json
+"srl_nokia-next-hop-groups:next-hop-groups": {
+  "group": [
+    { "name": "nh-r1-r2", "nexthop": [ { "admin-state": "enable", "index": 1, "ip-address": "10.0.10.2" } ] },
+    { "name": "nh-r1-r3", "nexthop": [ { "admin-state": "enable", "index": 1, "ip-address": "10.0.11.2" } ] }
+  ]
+},
+"srl_nokia-static-routes:static-routes": {
+  "route": [
+    { "admin-state": "enable", "next-hop-group": "nh-r1-r2", "prefix": "192.168.2.0/24" },
+    { "admin-state": "enable", "next-hop-group": "nh-r1-r3", "prefix": "192.168.3.0/24" }
+  ]
+}
+```
+
+**Pruebas de conectividad.** Hacemos `ping` entre hosts de LANs distintas, por ejemplo `docker exec clab-routing-testbed-pc11 ping -c 3 192.168.3.100`.
+
+> _[PENDIENTE: captura de las pruebas de conectividad (ping) entre hosts]_
 
 **Pregunta 10 (opcional).** Captura y análisis del tráfico de una operación `set` de gNMI.
 

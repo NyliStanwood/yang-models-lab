@@ -1,48 +1,4 @@
 
-#### 1.2.2. Análisis del tráfico de gestión en gNMI
-
-A continuación, veremos cómo capturar el tráfico de señalización intercambiado entre cliente y servidor al realizar operaciones mediante el protocolo de gestión gNMI. Como ya hemos visto en la teoría, gNMI utiliza llamadas gRPC sobre una conexión HTTP/2 para la comunicación entre cliente y servidore. Además, esta comunicación puede estar cifrada mediante el protocolo TLS y los mensajes gNMI están codificados utilizando el formato binario Protocol Buffers (Protobuf). Veremos a continuación cómo capturar y analizar el tráfico asociado a consultas realizadas con el protocolo gNMI. Veremos a continuación cómo identificar en la captura el tráfico de gestión gNMI, así como descifrar y decodificar los mensajes para facilitar su análisis.
-
-Para ello, dispone de un *script* [`clab-capture-traffic.sh`](../activities/module-1/clab-capture-traffic.sh) para poder capturar tráfico con Wireshark en las interfaces de red de los contenedores desplegados con el escenario de red de Containerlab. Se incluye a continuación el menú de ayuda para poder hacer uso del script:
-```bash
-Usage:
-  ./clab-capture-traffic.sh <container_name> <interface>
-    to open capture on specific container interface
-    Valid values:
-      <container_name>: clab-srlinux-testbed-pc1 clab-srlinux-testbed-pc2 clab-srlinux-testbed-r1 clab-srlinux-testbed-r2
-      <container_interface>: e1-1 e1-2 mgmt0 for router containers, eth0 eth1 for host containers
-```
-
-En concreto, para capturar el tráfico de gestión gNMI deberá utilizar la interfaz de gestión de los routers (es decir, `mgmt0`). Por ejemplo, para capturar tráfico en la interfaz de gestión del router `r1`, el comando a ejecutar sería el siguiente:
-```bash
-./clab-capture-traffic.sh clab-srlinux-testbed-r1  mgmt0
-```
-TODO =====> redo capture of traffic 1 by 1
-
-
-Mientras está activa la captura de tráfico, realizaremos las consultas con gNMI ejecutadas anteriormente para obtener las capacidades del router y para consultar el estado operativo de una de sus interfaces de red. Incluiremos la opción `--log-tls-secret` en el comando de `gNMIc`, de modo que se registren en un fichero los secretos de la sesión TLS establecida en la conexión HTTP/2, que posteriormente permitirá descifrar la comunicación  entre cliente y servidor gNMI. Por cada operación consultada con gNMI se generará un fichero de secretos TLS con el nombre  `<container_name>:57400.tlssecret.log`. El fichero generado con la primera consulta renómbrelo como `<container_name>-capabilities.tlssecret.log` mientras que el fichero generado con la segunda consulta renómbrelo como `<container_name>-get-rpc.tlssecret.log`.
-
->**Nota:** Por defecto, el fichero con los secretos TLS se genera siempre con el mismo nombre `<container_name>:57400.tlssecret`, por lo que debe renombrarlo justo después de cada operación que realice con gNMIc, de lo contrario se sobreescribirá su contenido.
-
-Una vez completadas las consultas y guardados los ficheros de secretos TLS de cada una de ellas, pare la captura de tráfico y guárdela con el nombre `gnmi-traffic.pcap` en la máquina virtual.
-
-Al analizar el tráfico capturado, encontraremos tráfico TLS producto de las operaciones realizadas con gNMI. Para descifrarlo, tendremos que incluir el fichero de secretos TLS correspondiente. En primer lugar, seleccionaremos el fichero asociado a la operación de extracción de capacidades. Para ello, iremos al panel de preferencias de Wireshark yendo a la barra de herramientas y seleccionando *"Edit > Preferences..."*. Una vez en el panel de preferencias, en la barra lateral desplegaremos la lista de protocolos y seleccione TLS. Vaya a la opción *"(Pre)-Master-Secreto log filename"* y pulsando en *"Browse..."* seleccione el fichero con los secretos TLS asociados. Mantendremos el resto de opciones marcadas por defecto y pulse el botón de *OK*.
-
-Una vez configurado el fichero de secretos TLS, podremos comprobar que el tráfico TLS se ha descifrado y que podemos visualizar los paquetes HTTP/2 y gRPC correspondientes a las operaciones de gestión gNMI. Como ya se ha introducido anteriormente, las llamadas gRPC utilizan Protocol Buffers (Protobuf) para la codificación binaria de los mensajes, pese a que los datos puedan ser solicitados y ser expresados en formato JSON. A continuación, decodificaremos los mensajes gRPC codificados en Protobuf para facilitar la interpretación de los datos intercambiados entre cliente y servidor. Para ello, vaya de nuevo al panel de preferencias de Wireshark y seleccione Protobuf en la lista de protocolos. Vaya entonces a la opción *"Protobuf search paths"* y pulse la opción *"Edit..."*. Pulsando el botón `+` y en la nueva fila generada en la tabla superior haga doble *click* en la celda debajo de *"Protobuf source directory"* y pulse en los `...` seleccionando el directorio `/home/upm/gnmi4wireshark`. Luego, marque la casilla de la celda de la derecha bajo la columna *"Load all files"*. Dale al botón de OK. En las preferencias de Protocol Buffers mantenga los valores marcados por defecto y seleccione de nuevo el botón OK.
-
->**Nota:** En `/home/upm/gnmi4wireshark` se encuentran los ficheros en formato .proto que permiten decodificar los mensajes en Protobuf intercambiados por gNMI. Estos ficheros .proto han sido obtenidos de la siguiente fuente de información: https://github.com/hellt/gnmi4wireshark.
-
-:point_right: **Pregunta 6:** Busque primero los paquetes HTTP/2 y gRPC asociados a la operación gNMI de consulta de capacidades. Incluya una captura de pantalla del paquete HTTP/2 en la memoria y determine aquellos campos o cabeceras asociados a los parámetros de conexión para la consulta establecida mediante gNMI. Para la respuesta, encuentre el paquete gRPC del mensaje de capacidades resultante y determine la cabecera *Protocol Buffers* con los campos asociados a la versión de gNMI usada, la lista de modelos YANG implementados por el servidor y los formatos de codificación consultados, incluyendo una captura de pantalla representativa en la memoria. Describa brevemente la información mostrada en las capturas de pantalla.
-
-:point_right: **Pregunta 7:** Repita el proceso para la operación GET de consulta de estado de la interfaz del router. Ahora, sobre la misma captura de tráfico, sólo tendrá que cambiar el fichero del secretos TLS asociado a la operación, pudiendo mantener la configuración de decodificación de Protobuf. Encuentre el paquete gRPC original de la petición GET y, yendo a la cabecera *Protocol Buffers*, determine los campos del mensaje e incluya una captura de pantalla asociada en la memoria. Encuentre luego el paquete gRPC de la respuesta y busque en la cabecera *Protocol Buffers* el mensaje con la respuesta asociada a la petición GET, incluyendo captura de pantalla representativa en la memoria. Describa brevemente la información mostrada en las capturas de pantalla.
-
->**Nota:** Incluya tanto las capturas de tráfico como los ficheros de secretos TLS utilizados para dar respuesta a las **Preguntas 6 y 7** en la entrega asociada a esta práctica.
-
-Una vez terminada la actividad, destruya el escenario de red virtualizado de Containerlab mediante la ejecución del siguiente *script*:
-```bash 
-./destroy-srlinux-testbed.sh
-```
-
 ## 2. Utilidades para examinar topología de red y configuración de red basada en modelos con gNMI   
 
 En esta segunda actividad, se desplegará un nuevo escenario de red virtualizado con Containerlab pero su configuración de red estará incompleta. El objetivo será utilizar las capacidades del protocolo gNMI para configurar remotamente los equipos de la red. La configuración a completar será relativa al direccionamiento y encaminamiento IP entre los routers del escenario desplegado.
@@ -200,7 +156,7 @@ outputs:
     format: event
 ```
 
-Deberá cambiar los valores `<container_name>` y `<...>` convenientemente. En el apartado *paths* de la subscripción periódica `r1_traffic_stats` indicada, incluya el *path* que apunte las estadísticas de la interfaz de red `ethernet-1/1` del router `r1` del escenario (es decir, nodo de datos general de estadísticas perteneciente modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto y utilizado en actividades anteriores). En el apartado *paths* de la subscripción basada en cambios `r1_port_status`  indicada, incluye dos *paths*, uno que apunte al estado operativo de la interfaz de red `ethernet-1/1` y el otro que apunte al estado administrativo de la interfaz `ethernet-1/1` (determine para ello los nodos de datos relativos pertenecientes al modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto anteriormente).
+Deberá cambiar los valores `<container_name>` y `<...>` convenientemente. En el apartado *paths* de la subscripción periódica `r1_traffic_stats_e1-1` indicada, incluya el *path* que apunte las estadísticas de la interfaz de red `ethernet-1/1` del router `r1` del escenario (es decir, nodo de datos general de estadísticas perteneciente modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto y utilizado en actividades anteriores). En el apartado *paths* de la subscripción basada en cambios `r1_interface_status_e1-1` indicada, incluye dos *paths*, uno que apunte al estado operativo de la interfaz de red `ethernet-1/1` y el otro que apunte al estado administrativo de la interfaz `ethernet-1/1` (determine para ello los nodos de datos relativos pertenecientes al modelo YANG de Nokia SR Linux para datos de configuración y estado de interfaces de red visto anteriormente).
 
 >**Nota:** Al incluir el índice de los *paths* donde se apunta al nombre de la interfaz, no incluya el nombre entre `""` o `''`.
 
@@ -252,7 +208,15 @@ outputs:
 ```
 Deberá configurar las subscripciones definidas para que apunten a la salida apropiada. Tenga en cuenta también que en el apartado `outputs` para cada tipo de subscripción definida en la sección `subscriptions`, puede asociar tantas salidas como desee. En el caso de Kafka, se configuran dos salidas, una para publicar las estadísticas de telemetría de tráfico en un *topic* denominado `traffic-stats` y otra para publicar notificaciones del estado operativo y administrativo de las interfaces  de red en un *topic* denominado `interface-status`.
 
-Una vez configurada la plantilla, veamos cómo arrancar el sistema de telemetría completo para probar su funcionalidad. En el directorio `module-3` encontrará un fichero [`docker-compose.yaml`](../activities/module-3/docker-compose.yaml) que define y configura los diferentes servicios dependientes para poder desplegar el sistema de telemetría como microservicios basados en contenedores Docker, incluido el cliente de `gNMIC`. Para poder comunicarse directamente con el escenario de red de Containerlab, los servicios contenerizados del sistema de telemetría utilizan la misma red de gestión de Docker que los equipos de la red. Para poder desplegar los servicios del sistema de telemetría ejecute el siguiente comando:
+Una vez configurada la plantilla, veamos cómo arrancar el sistema de telemetría completo para probar su funcionalidad. En el directorio `module-3` encontrará un fichero [`docker-compose.yaml`](../activities/module-3/docker-compose.yaml) que define y configura los diferentes servicios dependientes para poder desplegar el sistema de telemetría como microservicios basados en contenedores Docker, incluido el cliente de `gNMIC`. Para poder comunicarse directamente con el escenario de red de Containerlab, los servicios contenerizados del sistema de telemetría utilizan la misma red de gestión de Docker que los equipos de la red. 
+
+Antes de desplegar el sistema de telemetría, es necesario mover el contenido del directorio `module-3` a una ubicación fuera del directorio compartido `/home/upm/shared` (p.ej., a `/home/upm`). Además, hay que modificar los permisos de la carpeta `prometheus` y del fichero `prometheus.yaml` que contiene, para garantizar que el microservicio de Prometheus pueda acceder a ellos y arrancar correctamente. Para ello, desde la nueva ubicación del directorio `module-3`, ejecute los siguientes comandos:
+```bash
+chmod +rx prometheus
+chmod +rx prometheus/prometheus.yaml
+```
+
+Una vez realizados los pasos anteriores, para poder desplegar los servicios del sistema de telemetría ejecute el siguiente comando desde la nueva localización del directorio `module-3`:
 ```bash
 docker compose -f docker-compose.yaml up -d
 ```
